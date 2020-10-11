@@ -166,6 +166,9 @@ const Header = styled.header`
   h2 {
     margin: 0;
     font-size: 1.24rem;
+    @media (max-width: 800px) {
+      font-size: 1rem;
+    }
   }
   h2 {
     font-style: italic;
