@@ -28,6 +28,7 @@ const Table = styled.section`
   }
   div > span {
     text-align: right;
+    font-size: 0.8rem;
   }
   strong {
     padding-right: 1rem;
@@ -40,16 +41,20 @@ const Education = () => (
     <ul>
       <li>
         <div>
-          <strong>
-            Universidade de Santiago de Compostela - <i>Computer Science</i>
-          </strong>
+          <strong>Universidade de Santiago de Compostela</strong>
           <span>2011-2015</span>
+        </div>
+        <div>
+          <span>Computer Science</span>
         </div>
       </li>
       <li>
         <div>
-          <strong>Master in Full Stack Javascript</strong>
+          <strong>KeepCoding</strong>
           <span>2017-2018</span>
+        </div>
+        <div>
+          <span>Full Stack Javascript</span>
         </div>
       </li>
     </ul>
@@ -84,7 +89,7 @@ const Experience = () => (
         <div>
           <span>100% Remote</span>
           <span>
-            <i>3 years</i>
+            <i>{new Date().getFullYear() - 2018 + 1} years</i>
           </span>
         </div>
       </li>
