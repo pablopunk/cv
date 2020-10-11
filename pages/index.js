@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import gravatar from 'gravatar-url'
 import {
   SiJavascript,
   SiTypescript,
@@ -176,7 +175,7 @@ const Header = styled.header`
 const Side = () => (
   <>
     <p>
-      <img src={gravatar('pablo@pablopunk.com', { size: 150 })} />
+      <img src="/profile.jpeg" />
     </p>
     <p>
       <a href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
