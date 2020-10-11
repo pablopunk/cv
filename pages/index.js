@@ -200,16 +200,19 @@ const FlexRows = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  & > *:first-child {
+    margin-right: 1rem;
+  }
   @media (max-width: 800px) {
     flex-direction: column;
     align-items: center;
+    & > *:first-child {
+      margin-right: 0;
+    }
   }
   @media print {
     flex-direction: row;
     align-items: flex-start;
-  }
-  & > *:first-child {
-    margin-right: 1rem;
   }
 `
 
