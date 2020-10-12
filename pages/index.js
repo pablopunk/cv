@@ -8,7 +8,7 @@ import {
 } from 'react-icons/si'
 import { FaNodeJs } from 'react-icons/fa'
 import { GrMysql } from 'react-icons/gr'
-import { BiGitBranch } from 'react-icons/bi'
+import { BiGitBranch, BiMoon, BiSun } from 'react-icons/bi'
 import { AiFillApple, AiFillGithub } from 'react-icons/ai'
 import { DiLinux } from 'react-icons/di'
 
@@ -166,7 +166,6 @@ const Header = styled.header`
   border-top: 4px solid var(--color-accent);
   color: var(--color-accent);
   padding: 0 0.4rem 1rem;
-  cursor: pointer;
   h1,
   h2 {
     margin: 0;
@@ -185,6 +184,12 @@ const Side = () => (
     <p>
       <img src="/profile.jpeg" />
     </p>
+    <p className="hide-print show-dark" align="center" onClick={toggleTheme}>
+      <BiSun size="2em" />
+    </p>
+    <p className="hide-print show-light" align="center" onClick={toggleTheme}>
+      <BiMoon size="2em" />
+    </p>
     <p>
       <a href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
     </p>
@@ -199,6 +204,9 @@ const Side = () => (
       }
       p {
         margin: 0.5rem 0;
+      }
+      .hide-print {
+        cursor: pointer;
       }
     `}</style>
   </>
@@ -233,15 +241,14 @@ const FlexColumns = styled.div`
   flex-direction: column;
 `
 
+const toggleTheme = () =>
+  typeof window !== 'undefined' ? window['__toggleDarkMode']() : null
+
 export default function Index() {
   return (
     <>
       <main>
-        <Header
-          onClick={
-            typeof window !== 'undefined' ? window['__toggleDarkMode'] : null
-          }
-        >
+        <Header>
           <h1>Pablo P Varela</h1>
           <h2>Javascript Developer</h2>
         </Header>
@@ -280,6 +287,21 @@ export default function Index() {
             --color-fg: white;
             --color-accent: aquamarine;
             --color-accent2: deeppink;
+          }
+          .show-dark,
+          .show-light {
+            display: none;
+          }
+          body.dark .show-dark {
+            display: initial;
+          }
+          body.light .show-light {
+            display: initial;
+          }
+          @media print {
+            .hide-print {
+              display: none !important;
+            }
           }
           h3 {
             color: var(--color-accent2);
