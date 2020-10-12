@@ -34,9 +34,9 @@ export default class extends Document {
       <Html>
         <Head />
         <body>
+          <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
           <Main />
           <NextScript />
-          <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
         </body>
       </Html>
     )

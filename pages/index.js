@@ -221,6 +221,10 @@ const FlexRows = styled.div`
   @media print {
     flex-direction: row;
     align-items: flex-start;
+    & > *:first-child {
+      margin-right: 2rem;
+    }
+    font-size: 90%;
   }
 `
 
