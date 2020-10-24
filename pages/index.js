@@ -5,6 +5,7 @@ import {
   SiReact,
   SiMongodb,
   SiElectron,
+  SiNextDotJs,
 } from 'react-icons/si'
 import { FaNodeJs } from 'react-icons/fa'
 import { GrMysql } from 'react-icons/gr'
@@ -97,49 +98,84 @@ const Experience = () => (
   </Table>
 )
 
-const Skill = ({ text, Icon }) => (
-  <div>
+const Skill = ({ text, Icon, width }) => (
+  <article>
     <div className="skill">
-      <Icon />
-      <span>{text}</span>
+      <div className="bg">
+        <div className="inner"></div>
+      </div>
+      <div>
+        <span>{text}</span>
+        <Icon />
+      </div>
     </div>
     <style jsx>{`
-      div {
-        display: inline-block;
+      article {
+        position: relative;
+        border: 1px solid var(--color-accent);
+        border-radius: 10px;
+        margin-bottom: 0.5rem;
+        padding-right: 0.5rem;
+        width: 70%;
+        margin: 1rem auto;
       }
       .skill {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        border: 1px solid var(--color-accent);
-        border-radius: 3px;
-        margin-right: 1rem;
-        margin-bottom: 0.5rem;
-        padding: 0.2rem 0.5rem;
+        height: 39px;
       }
       .skill span {
-        margin-left: 0.4rem;
+        margin-right: 0.5rem;
+      }
+      .bg {
+        width: 75%;
+        height: 40px;
+      }
+      .bg .inner {
+        width: ${width}%;
+        height: 100%;
+        background-color: var(--color-accent);
+        border-radius: 10px 0 0 10px;
+      }
+      @media (max-width: 800px) {
+        article {
+          width: 100%;
+        }
+        .bg {
+          width: 65%;
+        }
       }
     `}</style>
-  </div>
+  </article>
 )
 
+const skills = [
+  { name: 'Javascript', icon: SiJavascript, width: 100 },
+  { name: 'Typescript', icon: SiTypescript, width: 99 },
+  { name: 'ReactJS', icon: SiReact, width: 95 },
+  { name: 'NextJS', icon: SiNextDotJs, width: 94 },
+  { name: 'NodeJS', icon: FaNodeJs, width: 90 },
+  { name: 'Git', icon: BiGitBranch, width: 94 },
+  { name: 'GitHub', icon: AiFillGithub, width: 87 },
+  { name: 'Mysql', icon: GrMysql, width: 80 },
+  { name: 'MongoDB', icon: SiMongodb, width: 75 },
+  { name: 'macOS', icon: AiFillApple, width: 93 },
+  { name: 'Linux', icon: DiLinux, width: 86 },
+  { name: 'Electron', icon: SiElectron, width: 70 },
+]
+
 const Skills = () => (
-  <Table>
+  <div>
     <h3>Skills</h3>
-    <Skill text="Javascript" Icon={SiJavascript} />
-    <Skill text="Typescript" Icon={SiTypescript} />
-    <Skill text="ReactJS" Icon={SiReact} />
-    <Skill text="NodeJS" Icon={FaNodeJs} />
-    <Skill text="Mysql" Icon={GrMysql} />
-    <Skill text="MongoDB" Icon={SiMongodb} />
-    <Skill text="Git" Icon={BiGitBranch} />
-    <Skill text="GitHub" Icon={AiFillGithub} />
-    <Skill text="macOS" Icon={AiFillApple} />
-    <Skill text="Linux" Icon={DiLinux} />
-    <Skill text="Electron" Icon={SiElectron} />
-  </Table>
+    {skills
+      .sort((a, b) => b.width - a.width)
+      .map((s) => (
+        <React.Fragment key={s.name}>
+          <Skill text={s.name} Icon={s.icon} width={s.width} />
+        </React.Fragment>
+      ))}
+  </div>
 )
 
 const Other = () => (
@@ -307,7 +343,7 @@ export default function Index() {
             color: var(--color-accent2);
           }
           main {
-            max-width: 1000px;
+            max-width: 850px;
             margin: 2rem auto;
             padding: 0 1rem;
           }
