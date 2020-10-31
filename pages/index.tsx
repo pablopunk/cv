@@ -12,7 +12,7 @@ import {
 } from 'react-icons/si'
 import { FaNodeJs } from 'react-icons/fa'
 import { GrMysql } from 'react-icons/gr'
-import { BiGitBranch, BiMoon, BiSun } from 'react-icons/bi'
+import { BiGitBranch, BiMoon, BiPrinter, BiSun } from 'react-icons/bi'
 import { AiFillApple, AiFillGithub } from 'react-icons/ai'
 import { DiLinux } from 'react-icons/di'
 
@@ -104,83 +104,81 @@ const Experience = () => (
   </Table>
 )
 
-const Skill = ({ text, Icon, width }) => (
-  <article>
-    <div className="skill">
-      <div className="bg">
-        <div className="inner"></div>
-      </div>
-      <div>
-        <span>{_(text)}</span>
-        <Icon />
-      </div>
-    </div>
+const Skill = ({ text, Icon }) => (
+  <>
+    <span className="skill">
+      <Icon size="2rem" />
+      <span>{_(text)}</span>
+    </span>
     <style jsx>{`
       article {
-        position: relative;
-        border: 1px solid var(--color-accent);
-        border-radius: 10px;
-        margin-bottom: 0.5rem;
-        padding-right: 0.5rem;
-        width: 70%;
-        margin: 1rem auto;
+        display: inline-block;
       }
       .skill {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        height: 39px;
+        justify-content: center;
+        padding: 0.4rem 0.6rem;
       }
-      .skill span {
-        margin-right: 0.5rem;
-      }
-      .bg {
-        width: 75%;
-        height: 40px;
-      }
-      .bg .inner {
-        width: ${width}%;
-        height: 100%;
-        background-color: var(--color-accent);
-        border-radius: 10px 0 0 10px;
-      }
-      @media (max-width: 800px) {
-        article {
-          width: 100%;
-        }
-        .bg {
-          width: 65%;
-        }
+      .skill > * {
+        margin: 0.2rem 0;
       }
     `}</style>
-  </article>
+  </>
 )
 
-const skills = [
-  { name: 'Javascript', icon: SiJavascript, width: 100 },
-  { name: 'Typescript', icon: SiTypescript, width: 99 },
-  { name: 'ReactJS', icon: SiReact, width: 95 },
-  { name: 'NextJS', icon: SiNextDotJs, width: 94 },
-  { name: 'NodeJS', icon: FaNodeJs, width: 90 },
-  { name: 'Git', icon: BiGitBranch, width: 94 },
-  { name: 'GitHub', icon: AiFillGithub, width: 87 },
-  { name: 'Mysql', icon: GrMysql, width: 80 },
-  { name: 'MongoDB', icon: SiMongodb, width: 75 },
-  { name: 'macOS', icon: AiFillApple, width: 93 },
-  { name: 'Linux', icon: DiLinux, width: 86 },
-  { name: 'Electron', icon: SiElectron, width: 70 },
+const mainSkills = [
+  { name: 'Javascript', icon: SiJavascript },
+  { name: 'Typescript', icon: SiTypescript },
+  { name: 'ReactJS', icon: SiReact },
+  { name: 'NextJS', icon: SiNextDotJs },
+  { name: 'Git', icon: BiGitBranch },
+  { name: 'GitHub', icon: AiFillGithub },
+  { name: 'macOS', icon: AiFillApple },
+]
+
+const secondarySkills = [
+  { name: 'NodeJS', icon: FaNodeJs },
+  { name: 'Mysql', icon: GrMysql },
+  { name: 'MongoDB', icon: SiMongodb },
+  { name: 'Linux', icon: DiLinux },
+  { name: 'Electron', icon: SiElectron },
 ]
 
 const Skills = () => (
   <div>
-    <h3>Skills</h3>
-    {skills
-      .sort((a, b) => b.width - a.width)
-      .map((s) => (
+    <h3>{_('Skills')}</h3>
+    <h4>{_('Core')}</h4>
+    <article>
+      {mainSkills.map((s) => (
         <React.Fragment key={s.name}>
-          <Skill text={s.name} Icon={s.icon} width={s.width} />
+          <Skill text={s.name} Icon={s.icon} />
         </React.Fragment>
       ))}
+    </article>
+    <h4>{_('Secondary')}</h4>
+    <article>
+      {secondarySkills.map((s) => (
+        <React.Fragment key={s.name}>
+          <Skill text={s.name} Icon={s.icon} />
+        </React.Fragment>
+      ))}
+    </article>
+    <style jsx>{`
+      article {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      @media (max-width: 800px) {
+        article {
+          justify-content: center;
+        }
+      }
+    `}</style>
   </div>
 )
 
@@ -194,7 +192,7 @@ const Other = () => (
     </p>
     <p>
       {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
-      (Photoshop, Inkscape, Pixelmator, FCPX...
+      (Photoshop, Inkscape, Pixelmator, FCPX...)
     </p>
     <p>
       <strong>{_('Currenly working remotely')}</strong>
@@ -227,19 +225,15 @@ const Side = () => (
     <p>
       <img src="/profile.jpeg" />
     </p>
-    <p className="hide-print show-dark" align="center" onClick={toggleTheme}>
-      <BiSun size="2em" />
-    </p>
-    <p className="hide-print show-light" align="center" onClick={toggleTheme}>
-      <BiMoon size="2em" />
-    </p>
     <p>
       <a href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
     </p>
     <p>
       <a href="https://pablopunk.com">pablopunk.com</a>
     </p>
-    <p>Galiza, Spain 🇪🇸</p>
+    <p>
+      {_('Galiza')}, {_('Spain')} 🇪🇸
+    </p>
     <style jsx>{`
       img {
         border-radius: 50%;
@@ -247,9 +241,6 @@ const Side = () => (
       }
       p {
         margin: 0.5rem 0;
-      }
-      .hide-print {
-        cursor: pointer;
       }
     `}</style>
   </>
@@ -287,11 +278,37 @@ const FlexColumns = styled.div`
 const toggleTheme = () =>
   typeof window !== 'undefined' ? window['__toggleDarkMode']() : null
 
+const TopButtons = () => (
+  <nav>
+    <div className="hide-print show-dark pointer" onClick={toggleTheme}>
+      <BiSun /> {_('Light theme')}
+    </div>
+    <div className="hide-print show-light pointer" onClick={toggleTheme}>
+      <BiMoon /> {_('Dark theme')}
+    </div>
+    <div className="hide-print pointer" onClick={() => print()}>
+      <BiPrinter /> {_('Print')}
+    </div>
+    <style jsx>{`
+      nav {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+      div {
+        margin-top: 1rem;
+        margin-left: 1rem;
+      }
+    `}</style>
+  </nav>
+)
+
 export default function Index() {
   init(useRouter().locale)
 
   return (
     <>
+      <TopButtons />
       <main>
         <Header>
           <h1>{_('Pablo P Varela')}</h1>
@@ -343,6 +360,9 @@ export default function Index() {
           body.light .show-light {
             display: initial;
           }
+          .pointer {
+            cursor: pointer;
+          }
           @media print {
             .hide-print {
               display: none !important;
@@ -353,7 +373,7 @@ export default function Index() {
           }
           main {
             max-width: 850px;
-            margin: 2rem auto;
+            margin: 1rem auto;
             padding: 0 1rem;
           }
           a {
