@@ -195,7 +195,7 @@ const Other = () => (
       (Photoshop, Inkscape, Pixelmator, FCPX...)
     </p>
     <p>
-      <strong>{_('Currenly working remotely')}</strong>
+      <strong>{_('Currently working remotely')}</strong>
     </p>
   </>
 )
