@@ -1,3 +1,6 @@
+import React from 'react'
+import { useRouter } from 'next/router'
+import { _, init } from '../translations/index'
 import styled from 'styled-components'
 import {
   SiJavascript,
@@ -38,7 +41,7 @@ const Table = styled.section`
 
 const Education = () => (
   <Table>
-    <h3>Education</h3>
+    <h3>{_('Education')}</h3>
     <ul>
       <li>
         <div>
@@ -46,16 +49,16 @@ const Education = () => (
           <span>2011-2015</span>
         </div>
         <div>
-          <span>Computer Science</span>
+          <span>{_('Computer Science')}</span>
         </div>
       </li>
       <li>
         <div>
-          <strong>KeepCoding</strong>
+          <strong>{_('KeepCoding')}</strong>
           <span>2017-2018</span>
         </div>
         <div>
-          <span>Full Stack Javascript</span>
+          <span>{_('Full Stack Javascript')}</span>
         </div>
       </li>
     </ul>
@@ -64,33 +67,36 @@ const Education = () => (
 
 const Experience = () => (
   <Table>
-    <h3>Experience</h3>
+    <h3>{_('Experience')}</h3>
     <ul>
       <li>
         <div>
           <strong>
-            Full Stack Web Developer, <i>Stang Decision Systems</i>
+            {_('Full Stack Web Developer')},{' '}
+            <i>{_('Stang Decision Systems')}</i>
           </strong>
           <span>2016-2018</span>
         </div>
         <div>
-          <span>Marquette, Michigan (U.S.A) and remote</span>
+          <span>{_('Marquette, Michigan (U.S.A) and remote')}</span>
           <span>
-            <i>2 years</i>
+            <i>2 {_('years')}</i>
           </span>
         </div>
       </li>
       <li>
         <div>
           <strong>
-            Full Stack Web Developer, <i>Sourcefabric</i>
+            {_('Full Stack Web Developer')}, <i>{_('Sourcefabric')}</i>
           </strong>
-          <span>2018-Today</span>
+          <span>2018-{_('Today')}</span>
         </div>
         <div>
-          <span>100% Remote</span>
+          <span>100% {_('Remote')}</span>
           <span>
-            <i>{new Date().getFullYear() - 2018 + 1} years</i>
+            <i>
+              {new Date().getFullYear() - 2018 + 1} {_('years')}
+            </i>
           </span>
         </div>
       </li>
@@ -105,7 +111,7 @@ const Skill = ({ text, Icon, width }) => (
         <div className="inner"></div>
       </div>
       <div>
-        <span>{text}</span>
+        <span>{_(text)}</span>
         <Icon />
       </div>
     </div>
@@ -182,15 +188,16 @@ const Other = () => (
   <>
     <h3>Other</h3>
     <p>
-      Two native languages (<strong>Spanish</strong> and{' '}
-      <strong>Galician</strong>) and advanced <strong>English</strong>.
+      {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
+      <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
+      <strong>{_('English')}</strong>.
     </p>
     <p>
-      Comfortable with <strong>graphic design tools</strong> (Photoshop,
-      Inkscape, Pixelmator, FCPX...).
+      {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
+      (Photoshop, Inkscape, Pixelmator, FCPX...
     </p>
     <p>
-      <strong>Currenly working remotely</strong>
+      <strong>{_('Currenly working remotely')}</strong>
     </p>
   </>
 )
@@ -281,12 +288,14 @@ const toggleTheme = () =>
   typeof window !== 'undefined' ? window['__toggleDarkMode']() : null
 
 export default function Index() {
+  init(useRouter().locale)
+
   return (
     <>
       <main>
         <Header>
-          <h1>Pablo P Varela</h1>
-          <h2>Javascript Developer</h2>
+          <h1>{_('Pablo P Varela')}</h1>
+          <h2>{_('Javascript Developer')}</h2>
         </Header>
         <FlexRows>
           <FlexColumns>
