@@ -47,20 +47,20 @@ const Education = () => (
     <ul>
       <li>
         <div>
-          <strong>Universidade de Santiago de Compostela</strong>
-          <span>2011-2015</span>
-        </div>
-        <div>
-          <span>{_('Computer Science')}</span>
-        </div>
-      </li>
-      <li>
-        <div>
           <strong>{_('KeepCoding')}</strong>
           <span>2017-2018</span>
         </div>
         <div>
           <span>{_('Full Stack Javascript')}</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Universidade de Santiago de Compostela</strong>
+          <span>2011-2015</span>
+        </div>
+        <div>
+          <span>{_('Computer Science')}</span>
         </div>
       </li>
     </ul>
