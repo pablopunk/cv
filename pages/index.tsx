@@ -139,7 +139,7 @@ const Experience = () => {
 const Skill = ({ text, Icon }) => (
   <>
     <span className="skill">
-      <Icon size="2rem" />
+      <Icon size="1.5rem" />
       <span>{_(text)}</span>
     </span>
     <style jsx>{`
@@ -208,6 +208,11 @@ const Skills = () => (
       @media (max-width: 800px) {
         article {
           justify-content: center;
+        }
+      }
+      @media print {
+        article {
+          justify-content: flex-start;
         }
       }
     `}</style>
@@ -427,9 +432,8 @@ export default function Index() {
         }
         footer {
           font-size: 0.75rem;
-          float: right;
-          margin-right: 1rem;
-          margin-bottom: 1rem;
+          text-align: right;
+          margin: 1rem;
         }
       `}</style>
     </>
