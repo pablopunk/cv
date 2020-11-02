@@ -31,8 +31,10 @@ const Table = styled.section`
     justify-content: space-between;
   }
   div > span {
-    text-align: right;
     font-size: 0.8rem;
+  }
+  div > span:last-child {
+    text-align: right;
   }
   strong {
     padding-right: 1rem;
@@ -65,44 +67,74 @@ const Education = () => (
   </Table>
 )
 
-const Experience = () => (
-  <Table>
-    <h3>{_('Experience')}</h3>
-    <ul>
-      <li>
-        <div>
-          <strong>
-            {_('Full Stack Web Developer')},{' '}
-            <i>{_('Stang Decision Systems')}</i>
-          </strong>
-          <span>2016-2018</span>
-        </div>
-        <div>
-          <span>{_('Marquette, Michigan (U.S.A) and remote')}</span>
-          <span>
-            <i>2 {_('years')}</i>
-          </span>
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>
-            {_('Full Stack Web Developer')}, <i>{_('Sourcefabric')}</i>
-          </strong>
-          <span>2018-{_('Today')}</span>
-        </div>
-        <div>
-          <span>100% {_('Remote')}</span>
-          <span>
-            <i>
-              {new Date().getFullYear() - 2018 + 1} {_('years')}
-            </i>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </Table>
-)
+const Experience = () => {
+  const jobs = [
+    {
+      position: _('Senior Frontend Developer'),
+      company: _('Sourcefabric'),
+      url: 'https://www.superdesk.org/',
+      period: '2018-' + _('Today'),
+      time: `${new Date().getFullYear() - 2018 + 1} ${_('years')}`,
+      location: '100% ' + _('Remote'),
+      description: _(
+        'We build the best open source CMS for journalists trusted by national news agencies and independent organisations all around the world'
+      ),
+      tech: _('Typescript, ReactJS'),
+    },
+    {
+      position: _('Full Stack Web Developer'),
+      company: _('Stang Decision Systems'),
+      url: 'https://stangds.com',
+      period: '2016-2018',
+      time: '2 ' + _('years'),
+      location: _('Marquette, Michigan (U.S.A) and remote'),
+      description: _(
+        'Part of a team of 3 developers, we built a tool to automate anonymous hiring for companies'
+      ),
+      tech: _('PHP, JS, HTML/CSS'),
+    },
+  ]
+  return (
+    <Table>
+      <h3>{_('Experience')}</h3>
+      <ul>
+        {jobs.map((job) => (
+          <li key={job.period}>
+            <div>
+              <strong>
+                {job.position},{' '}
+                <a href={job.url}>
+                  <i>{job.company}</i>
+                </a>
+              </strong>
+              <span>{job.period}</span>
+            </div>
+            <div>
+              <span>{job.location}</span>
+              <span>
+                <i>{job.time}</i>
+              </span>
+            </div>
+            <div style={{ marginTop: '1rem' }}>
+              <span>{job.description}.</span>
+              <span
+                style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}
+              >
+                {job.tech}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <style jsx>{`
+        a {
+          color: var(--color-fg);
+          border-bottom: 1px dashed var(--color-accent);
+        }
+      `}</style>
+    </Table>
+  )
+}
 
 const Skill = ({ text, Icon }) => (
   <>
@@ -185,18 +217,23 @@ const Skills = () => (
 const Other = () => (
   <>
     <h3>Other</h3>
-    <p>
+    <div>
       {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
       <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
       <strong>{_('English')}</strong>.
-    </p>
-    <p>
+    </div>
+    <div>
       {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
-      (Photoshop, Inkscape, Pixelmator, FCPX...)
-    </p>
-    <p>
-      <strong>{_('Currently working remotely')}</strong>
-    </p>
+      (Photoshop, Inkscape, Pixelmator, FCPX...).
+    </div>
+    <div>
+      <strong>{_('Currently working remotely')}.</strong>
+    </div>
+    <style jsx>{`
+      div:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    `}</style>
   </>
 )
 
