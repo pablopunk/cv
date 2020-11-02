@@ -328,13 +328,12 @@ const TopButtons = () => (
     </div>
     <style jsx>{`
       nav {
-        padding: 1rem;
+        padding: 0.5rem;
         display: flex;
         justify-content: center;
       }
       div {
-        margin-top: 1rem;
-        margin-left: 1rem;
+        margin: 0.5rem;
       }
     `}</style>
   </nav>
@@ -362,67 +361,77 @@ export default function Index() {
             <Other />
           </FlexColumns>
         </FlexRows>
-        <style global jsx>{`
-          * {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-              Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-              'Segoe UI Emoji', 'Segoe UI Symbol';
-            box-sizing: border-box;
-          }
-          body {
-            padding: 0;
-            margin: 0;
-
-            --color-bg: white;
-            --color-fg: black;
-            --color-accent: lightseagreen;
-            --color-accent2: mediumorchid;
-
-            color: var(--color-fg);
-            background-color: var(--color-bg);
-          }
-          body.dark {
-            --color-bg: black;
-            --color-fg: white;
-            --color-accent: aquamarine;
-            --color-accent2: deeppink;
-          }
-          .show-dark,
-          .show-light {
-            display: none;
-          }
-          body.dark .show-dark {
-            display: initial;
-          }
-          body.light .show-light {
-            display: initial;
-          }
-          .pointer {
-            cursor: pointer;
-          }
-          @media print {
-            .hide-print {
-              display: none !important;
-            }
-          }
-          h3 {
-            color: var(--color-accent2);
-          }
-          main {
-            max-width: 850px;
-            margin: 1rem auto;
-            padding: 0 1rem;
-          }
-          a {
-            color: var(--color-accent);
-            text-decoration: none;
-          }
-          svg {
-            color: var(--color-accent);
-            vertical-align: middle;
-          }
-        `}</style>
       </main>
+      <footer>
+        {_('This CV is live on') + ' '}
+        <a href="https://cv.pablopunk.com">cv.pablopunk.com</a>
+      </footer>
+      <style global jsx>{`
+        * {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol';
+          box-sizing: border-box;
+        }
+        body {
+          padding: 0;
+          margin: 0;
+
+          --color-bg: white;
+          --color-fg: black;
+          --color-accent: lightseagreen;
+          --color-accent2: mediumorchid;
+
+          color: var(--color-fg);
+          background-color: var(--color-bg);
+        }
+        body.dark {
+          --color-bg: black;
+          --color-fg: white;
+          --color-accent: aquamarine;
+          --color-accent2: deeppink;
+        }
+        .show-dark,
+        .show-light {
+          display: none;
+        }
+        body.dark .show-dark {
+          display: initial;
+        }
+        body.light .show-light {
+          display: initial;
+        }
+        .pointer {
+          cursor: pointer;
+        }
+        @media print {
+          .hide-print {
+            display: none !important;
+          }
+        }
+        h3 {
+          color: var(--color-accent2);
+        }
+        main {
+          max-width: 850px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+        a {
+          color: var(--color-accent);
+          text-decoration: none;
+        }
+        svg {
+          color: var(--color-accent);
+          vertical-align: middle;
+        }
+        footer {
+          font-size: 0.75rem;
+          float: right;
+          margin-right: 1rem;
+          margin-bottom: 1rem;
+        }
+      `}</style>
     </>
   )
 }
