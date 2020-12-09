@@ -91,7 +91,7 @@ const Experience = () => {
       description: _(
         'Part of a team of 3 developers, we built a tool to automate anonymous hiring for companies'
       ),
-      tech: _('PHP, JS, HTML/CSS'),
+      tech: _('PHP, JS, HTML/CSS, MySQL'),
     },
   ]
   return (
@@ -434,6 +434,14 @@ export default function Index() {
           font-size: 0.75rem;
           text-align: right;
           margin: 1rem;
+          position: fixed;
+          bottom: 0;
+          right: 0;
+        }
+        @media (max-width: 800px), @media print {
+          footer {
+            position: relative;
+          }
         }
       `}</style>
     </>
