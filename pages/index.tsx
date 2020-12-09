@@ -229,7 +229,7 @@ const Other = () => (
     </div>
     <div>
       {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
-      (Photoshop, Inkscape, Pixelmator, FCPX...).
+      (Figma, Photoshop, Inkscape, Pixelmator, FCPX...).
     </div>
     <div>
       <strong>{_('Currently working remotely')}.</strong>
