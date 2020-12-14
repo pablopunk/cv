@@ -37,11 +37,7 @@ export default class extends Document {
           <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
           <Main />
           <NextScript />
-          <script
-            data-goatcounter="https://cvpablopunk.goatcounter.com/count"
-            async
-            src="/goat"
-          ></script>
+          <script data-goatcounter="/goat" async src="/count.js"></script>
         </body>
       </Html>
     )
