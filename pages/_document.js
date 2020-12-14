@@ -40,7 +40,7 @@ export default class extends Document {
           <script
             data-goatcounter="https://cvpablopunk.goatcounter.com/count"
             async
-            src="//gc.zgo.at/count.js"
+            src="/goat"
           ></script>
         </body>
       </Html>
