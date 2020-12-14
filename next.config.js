@@ -8,10 +8,12 @@ module.exports = {
       {
         source: '/count.js',
         destination: 'https://gc.zgo.at/count.js',
+        locale: false,
       },
       {
         source: '/goat',
         destination: 'https://cvpablopunk.goatcounter.com/count',
+        locale: false,
       },
     ]
   },
