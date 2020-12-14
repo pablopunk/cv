@@ -6,7 +6,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: 'goat',
+        source: '/goat',
         destination: 'https://gc.zgo.at/count.js',
       },
     ]
