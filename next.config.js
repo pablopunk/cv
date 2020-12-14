@@ -6,12 +6,12 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/count.js',
+        source: '/(es|en)/count.js',
         destination: 'https://gc.zgo.at/count.js',
         locale: false,
       },
       {
-        source: '/goat',
+        source: '/(es|en)/goat',
         destination: 'https://cvpablopunk.goatcounter.com/count',
         locale: false,
       },
