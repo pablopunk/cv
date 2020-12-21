@@ -420,7 +420,7 @@ export default function Index() {
         main {
           max-width: 850px;
           margin: 0 auto;
-          padding: 0 1rem;
+          padding: 1rem;
         }
         a {
           color: var(--color-accent);
