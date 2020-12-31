@@ -322,6 +322,11 @@ const toggleTheme = () =>
 
 const TopButtons = () => (
   <nav>
+    <div className="hide-print">
+      <a href="/en">English</a>
+      <span style={{ margin: '0 .3rem' }}>-</span>
+      <a href="/es">Spanish</a>
+    </div>
     <div className="hide-print show-dark pointer" onClick={toggleTheme}>
       <BiSun /> {_('Light theme')}
     </div>
