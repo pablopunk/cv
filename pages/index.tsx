@@ -15,6 +15,7 @@ import { GrMysql } from 'react-icons/gr'
 import { BiGitBranch, BiMoon, BiPrinter, BiSun } from 'react-icons/bi'
 import { AiFillApple, AiFillGithub } from 'react-icons/ai'
 import { DiLinux } from 'react-icons/di'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Table = styled.section`
   ul {
@@ -38,6 +39,13 @@ const Table = styled.section`
   }
   strong {
     padding-right: 1rem;
+  }
+`
+
+const ImageWrapper = styled.span`
+  img {
+    border-radius: 50%;
+    border: 4px solid var(--color-accent2);
   }
 `
 
@@ -265,7 +273,22 @@ const Header = styled.header`
 const Side = () => (
   <>
     <p>
-      <img src="/profile.jpeg" />
+      <ImageWrapper>
+        <LazyLoadImage
+          src="/profile.jpg"
+          width={158}
+          height={158}
+          alt="Profile pic"
+          placeholder={
+            <img
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////2wBDARISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////wAARCACWAJYDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAQIDAAQFBv/EABgQAQEBAQEAAAAAAAAAAAAAAAABERIC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQACA//EABgRAQEBAQEAAAAAAAAAAAAAAAARARIC/9oADAMBAAIRAxEAPwD1PDo8oeXR5YbWh04cI2hpdLaia0ultJoKmtqWtoS2mlRlPKkvKeIyqShKwycPEDCUUjMDJPE8xeJ+YrGweCAItaW1rU7QWtLoWl1lqG0dT0dRisp5UpTygRaVSVCVSUhaU8qMp5UFdHU9HUFNZPWScEh40hsbDBTEoaJU6epVlrMClalDeYIlEGKQ0qejqEWlPKhptLMdEpunP0PRZjo6Hpz9N0k6emc/bJKSCbGbZJSVSp1lrEqlVPSVZ10zCUutS6y6ZhtHU9bUYro6lrahuLa3SPTdNMbi/TdOfpuizHR2Pbl7btCOrtnL2yT3AOWtMEqXpWpeg3iPpD0t6R9MuvnEqS01TtZdcwdDSaGpqKa2paGljcV6DpLQ0sar0HSXQdFjVem6R6DUyt0yPTIPrS0S1pjC1L0pUvQdMR9Iel/SHpl18o+kqp6SodcLS6NIjW0NACzo6XQAuejoaUNLGm0NKyZNrEZB9lpbQ0tpYa1K01qdobxP0j6UtSodM1KpVWkqjpmpUlVpbFF0kB7C2GM7qdKewtLG6UBBMgzMgDCyD6not9JdF6ajCl9EtJfRL6EOaa1O0LS6o3mtSswjXRcLigYYukrC2LYSxQVGwli1hLDGalgHsDDBSAfAwRUjGxlE9fsOkOy9NxhfovSPQdKKq9BqXQ6oaropaaURVRgFQ0C05aYKnYSxWkpiqdhcULigpMDFMDBDSYymMoq3QazNMNoazJNo6zInlPKzJHlMzJMDMQWlrMUAMwQY2MyI4zMC/9k="
+              alt="Profile pic"
+              width={158}
+              height={158}
+            />
+          }
+        />
+      </ImageWrapper>
     </p>
     <p>
       <a href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
@@ -277,10 +300,6 @@ const Side = () => (
       {_('Galiza')}, {_('Spain')} 🇪🇸
     </p>
     <style jsx>{`
-      img {
-        border-radius: 50%;
-        border: 4px solid var(--color-accent2);
-      }
       p {
         margin: 0.5rem 0;
       }
@@ -324,7 +343,7 @@ const TopButtons = () => (
   <nav>
     <div className="hide-print">
       <a href="/en">English</a>
-      <span style={{ margin: '0 .3rem' }}>-</span>
+      <span style={{ margin: '0 .3rem' }}>/</span>
       <a href="/es">Spanish</a>
     </div>
     <div className="hide-print show-dark pointer" onClick={toggleTheme}>
