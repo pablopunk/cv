@@ -82,7 +82,7 @@ const Experience = () => {
       company: _('Sourcefabric'),
       url: 'https://www.superdesk.org/',
       period: '2018-' + _('Today'),
-      time: `${new Date().getFullYear() - 2018 + 1} ${_('years')}`,
+      time: `${new Date().getFullYear() - 2018} ${_('years')}`,
       location: '100% ' + _('Remote'),
       description: _(
         'We build the best open source CMS for journalists trusted by national news agencies and independent organisations all around the world'
