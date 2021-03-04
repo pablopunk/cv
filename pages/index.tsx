@@ -25,7 +25,7 @@ const Table = styled.section`
   li {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.4rem;
   }
   li div {
     display: flex;
@@ -36,6 +36,7 @@ const Table = styled.section`
   }
   div > span:last-child {
     text-align: right;
+    max-width: 30%;
   }
   strong {
     padding-right: 1rem;
@@ -51,7 +52,9 @@ const ImageWrapper = styled.span`
 
 const Education = () => (
   <Table>
-    <h3>{_('Education')}</h3>
+    <h3>
+      <span>{_('Education')}</span>
+    </h3>
     <ul>
       <li>
         <div>
@@ -59,7 +62,10 @@ const Education = () => (
           <span>2017-2018</span>
         </div>
         <div>
-          <span>{_('Full Stack Javascript')}</span>
+          <span>
+            <i>{_('Full Stack Javascript')}</i>
+          </span>
+          <span></span>
         </div>
       </li>
       <li>
@@ -68,7 +74,10 @@ const Education = () => (
           <span>2011-2015</span>
         </div>
         <div>
-          <span>{_('Computer Science')}</span>
+          <span>
+            <i>{_('Computer Science')}</i>
+          </span>
+          <span></span>
         </div>
       </li>
     </ul>
@@ -79,10 +88,22 @@ const Experience = () => {
   const jobs = [
     {
       position: _('Senior Frontend Developer'),
+      company: _('Prezly'),
+      url: 'https://www.prezly.com/',
+      period: '2020-' + _('Today'),
+      time: _('New!'),
+      location: '100% ' + _('Remote'),
+      description: _(
+        'Prezly helps you tell your brand stories through an advanced CRM, CMS, and campaign software'
+      ),
+      tech: _('Typescript, ReactJS, NextJS'),
+    },
+    {
+      position: _('Senior Frontend Developer'),
       company: _('Sourcefabric'),
       url: 'https://www.superdesk.org/',
-      period: '2018-' + _('Today'),
-      time: `${new Date().getFullYear() - 2018} ${_('years')}`,
+      period: '2018-2020',
+      time: '3 ' + _('years'),
       location: '100% ' + _('Remote'),
       description: _(
         'We build the best open source CMS for journalists trusted by national news agencies and independent organisations all around the world'
@@ -104,13 +125,15 @@ const Experience = () => {
   ]
   return (
     <Table>
-      <h3>{_('Experience')}</h3>
+      <h3>
+        <span>{_('Experience')}</span>
+      </h3>
       <ul>
         {jobs.map((job) => (
           <li key={job.period}>
             <div>
               <strong>
-                {job.position},{' '}
+                <span className="position">{job.position}</span>,{' '}
                 <a href={job.url}>
                   <i>{job.company}</i>
                 </a>
@@ -118,12 +141,14 @@ const Experience = () => {
               <span>{job.period}</span>
             </div>
             <div>
-              <span>{job.location}</span>
+              <span>
+                <i>{job.location}</i>
+              </span>
               <span>
                 <i>{job.time}</i>
               </span>
             </div>
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ marginTop: '.4rem' }}>
               <span>{job.description}.</span>
               <span
                 style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}
@@ -137,6 +162,15 @@ const Experience = () => {
       <style jsx>{`
         a {
           color: var(--color-fg);
+          border-bottom: 1px dashed var(--color-accent);
+        }
+        .position {
+          color: var(--color-accent);
+        }
+        li {
+          padding: 0.8rem 0;
+        }
+        li:not(:last-child) {
           border-bottom: 1px dashed var(--color-accent);
         }
       `}</style>
@@ -162,7 +196,7 @@ const Skill = ({ text, Icon }) => (
         padding: 0.4rem 0.6rem;
       }
       .skill > * {
-        margin: 0.2rem 0;
+        margin-top: 0.1rem;
       }
     `}</style>
   </>
@@ -188,7 +222,9 @@ const secondarySkills = [
 
 const Skills = () => (
   <div>
-    <h3>{_('Skills')}</h3>
+    <h3>
+      <span>{_('Skills')}</span>
+    </h3>
     <h4>{_('Core')}</h4>
     <article>
       {mainSkills.map((s) => (
@@ -223,13 +259,21 @@ const Skills = () => (
           justify-content: flex-start;
         }
       }
+      h3 {
+        padding-bottom: 0.6rem;
+      }
+      h4 {
+        margin: 0.8rem 0 0 0.8rem;
+      }
     `}</style>
   </div>
 )
 
 const Other = () => (
   <>
-    <h3>Other</h3>
+    <h3>
+      <span>{_('Other')}</span>
+    </h3>
     <div>
       {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
       <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
@@ -243,8 +287,12 @@ const Other = () => (
       <strong>{_('Currently working remotely')}.</strong>
     </div>
     <style jsx>{`
-      div:not(:last-child) {
-        margin-bottom: 1rem;
+      div {
+        margin: 0.5rem 0 0.5rem 0.5rem;
+      }
+      h3 {
+        margin-top: 1rem;
+        padding-bottom: 0.7rem;
       }
     `}</style>
   </>
@@ -438,8 +486,22 @@ export default function Index() {
             display: none !important;
           }
         }
+        h3 > span {
+          background-color: var(--color-accent2);
+          color: var(--color-bg);
+          padding: 0.1rem 0.3rem;
+        }
+        @media print {
+          h3 > span {
+            background-color: var(--color-bg);
+            color: var(--color-accent2);
+          }
+        }
         h3 {
-          color: var(--color-accent2);
+          margin: 0;
+        }
+        h4 {
+          margin: 0.5rem 0;
         }
         main {
           max-width: 850px;
