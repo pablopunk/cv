@@ -18,52 +18,61 @@ import { DiLinux } from 'react-icons/di'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import classNames from 'classnames'
 
-const Table = styled.section``
-
-const ImageWrapper = styled.span``
-
 const Education = () => (
-  <Table>
-    <h3>
+  <div>
+    <h3 className={sectionTitleStyles}>
       <span>{_('Education')}</span>
     </h3>
-    <ul>
-      <li>
-        <div>
+    <ul className="border-l border-accent2 p-3">
+      <li className="">
+        <div className="w-full flex justify-between">
           <strong>{_('KeepCoding')}</strong>
           <span>2017-2018</span>
         </div>
         <div>
-          <span>
+          <span className="text-accent">
             <i>{_('Full Stack Javascript')}</i>
           </span>
           <span></span>
         </div>
       </li>
       <li>
-        <div>
+        <div className="w-full flex justify-between">
           <strong>Universidade de Santiago de Compostela</strong>
           <span>2011-2015</span>
         </div>
         <div>
-          <span>
+          <span className="text-accent">
             <i>{_('Computer Science')}</i>
           </span>
           <span></span>
         </div>
       </li>
     </ul>
-  </Table>
+  </div>
 )
+
+const sectionTitleStyles =
+  'mt-2 border-b border-accent2 p-1 font-semibold text-lg uppercase text-right'
 
 const Experience = () => {
   const jobs = [
     {
+      position: _('Senior Full Stack Developer'),
+      company: _('Maze'),
+      url: 'https://www.maze.co/',
+      period: 'Aug 2021-' + _('Today'),
+      time: _('New!'),
+      location: '100% ' + _('Remote'),
+      description: _('Fuel decision-making with rapid, remote testing'),
+      tech: _('TS, ReactJS, GraphQL, NodeJS, Neo4J'),
+    },
+    {
       position: _('Senior Frontend Developer'),
       company: _('Prezly'),
       url: 'https://www.prezly.com/',
-      period: '2021-' + _('Today'),
-      time: _('New!'),
+      period: 'Mar 2021-Jul 2021',
+      time: '5 ' + _('months'),
       location: '100% ' + _('Remote'),
       description: _(
         'Prezly helps you tell your brand stories through an advanced CRM, CMS, and campaign software'
@@ -96,23 +105,24 @@ const Experience = () => {
     },
   ]
   return (
-    <Table>
-      <h3 className="bg-accent2 text-bg p-1 font-semibold text-lg">
-        {_('Experience')}
-      </h3>
-      <ul className="py-3">
+    <div>
+      <h3 className={sectionTitleStyles}>{_('Experience')}</h3>
+      <ul className="py-3 border-l border-accent2 pl-4">
         {jobs.map((job) => (
-          <li key={job.period}>
-            <div>
+          <li
+            key={job.period}
+            className="border my-2 p-2 rounded-md border-accent border-dashed"
+          >
+            <div className="flex w-full justify-between">
               <strong>
-                <span className="position">{job.position}</span>,{' '}
+                <span className="text-accent italic">{job.position}</span>,{' '}
                 <a href={job.url}>
                   <i>{job.company}</i>
                 </a>
               </strong>
               <span>{job.period}</span>
             </div>
-            <div>
+            <div className="flex w-full justify-between">
               <span>
                 <i>{job.location}</i>
               </span>
@@ -120,20 +130,22 @@ const Experience = () => {
                 <i>{job.time}</i>
               </span>
             </div>
-            <div className="mt-1">
+            <div className="flex w-full justify-between mt-1 text-sm">
               <span>{job.description}.</span>
-              <span className="font-semibold text-accent">{job.tech}</span>
+              <span className="font-semibold text-accent text-right">
+                {job.tech}
+              </span>
             </div>
           </li>
         ))}
       </ul>
-    </Table>
+    </div>
   )
 }
 
 const Skill = ({ text, Icon }) => (
   <>
-    <span className="skill">
+    <span className="mr-3 flex items-center flex-col justify-center text-accent">
       <Icon size="1.5rem" />
       <span>{_(text)}</span>
     </span>
@@ -160,44 +172,46 @@ const secondarySkills = [
 
 const Skills = () => (
   <div>
-    <h3 className="bg-accent2 text-bg p-1 font-semibold text-lg">
-      {_('Skills')}
-    </h3>
-    <h4>{_('Core')}</h4>
-    <article>
-      {mainSkills.map((s) => (
-        <React.Fragment key={s.name}>
-          <Skill text={s.name} Icon={s.icon} />
-        </React.Fragment>
-      ))}
-    </article>
-    <h4>{_('Secondary')}</h4>
-    <article>
-      {secondarySkills.map((s) => (
-        <React.Fragment key={s.name}>
-          <Skill text={s.name} Icon={s.icon} />
-        </React.Fragment>
-      ))}
-    </article>
+    <h3 className={sectionTitleStyles}>{_('Skills')}</h3>
+    <div className="border-l border-accent2 p-3">
+      <h4 className="font-semibold text-lg">{_('Core')}</h4>
+      <article className="flex flex-wrap">
+        {mainSkills.map((s) => (
+          <div key={s.name} className="my-2">
+            <Skill text={s.name} Icon={s.icon} />
+          </div>
+        ))}
+      </article>
+      <h4 className="font-semibold text-lg my-2">{_('Secondary')}</h4>
+      <article className="flex flex-wrap">
+        {secondarySkills.map((s) => (
+          <div key={s.name} className="my-2">
+            <Skill text={s.name} Icon={s.icon} />
+          </div>
+        ))}
+      </article>
+    </div>
   </div>
 )
 
 const Other = () => (
   <>
-    <h3>
+    <h3 className={sectionTitleStyles}>
       <span>{_('Other')}</span>
     </h3>
-    <div>
-      {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
-      <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
-      <strong>{_('English')}</strong>.
-    </div>
-    <div>
-      {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
-      (Figma, Photoshop, Inkscape, Pixelmator, FCPX...).
-    </div>
-    <div>
-      <strong>{_('Currently working remotely')}.</strong>
+    <div className="border-l border-accent2 p-3">
+      <div className="">
+        {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
+        <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
+        <strong>{_('English')}</strong>.
+      </div>
+      <div>
+        {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
+        (Figma, Photoshop, Inkscape, Pixelmator, FCPX...).
+      </div>
+      <div>
+        <strong>{_('Currently working remotely')}.</strong>
+      </div>
     </div>
   </>
 )
@@ -280,7 +294,7 @@ function Index() {
     <>
       <TopButtons />
       <main className="mx-auto max-w-4xl p-5">
-        <div className="flex items-center justify-between border-t-4 border-accent px-2 py-1 text-lg font-semibold text-accent">
+        <div className="flex items-center justify-between border-t-4 border-accent px-2 py-1 text-xl font-semibold text-accent">
           <h1>{_('Pablo P Varela')}</h1>
           <h2 className="italic">{_('Javascript Developer')}</h2>
         </div>
@@ -296,9 +310,14 @@ function Index() {
           </div>
         </div>
       </main>
-      <footer>
-        {_('This CV is live on') + ' '}
-        <a href="https://cv.pablopunk.com">cv.pablopunk.com</a>
+      <footer className="absolute bottom-2 right-3">
+        <div> </div>
+        <p className="">
+          {_('This CV is live on') + ' '}
+          <a className="text-accent" href="https://cv.pablopunk.com">
+            cv.pablopunk.com
+          </a>
+        </p>
       </footer>
     </>
   )

@@ -5,14 +5,16 @@
   --color-accent: royalblue;
   --color-accent2: darkturquoise;
   --color-border: #e0e0e0;
+
+  font-size: 13px;
 }
 
 body.dark {
   --color-bg: #121212;
   --color-bg2: black;
   --color-fg: #f2f2f2;
-  --color-accent: cyan;
-  --color-accent2: lightpink;
+  --color-accent: aquamarine;
+  --color-accent2: deeppink;
   --color-border: #565656;
 }
 
