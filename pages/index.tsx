@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import { _, init } from '../translations/index'
-import styled from 'styled-components'
 import {
   SiJavascript,
   SiTypescript,
@@ -16,82 +15,63 @@ import { BiGitBranch, BiMoon, BiPrinter, BiSun } from 'react-icons/bi'
 import { AiFillApple, AiFillGithub } from 'react-icons/ai'
 import { DiLinux } from 'react-icons/di'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-
-const Table = styled.section`
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  li {
-    display: flex;
-    flex-direction: column;
-    padding: 0.4rem 0.4rem;
-  }
-  li div {
-    display: flex;
-    justify-content: space-between;
-  }
-  div > span {
-    font-size: 0.8rem;
-  }
-  div > span:last-child {
-    text-align: right;
-    max-width: 30%;
-  }
-  strong {
-    padding-right: 1rem;
-  }
-`
-
-const ImageWrapper = styled.span`
-  img {
-    border-radius: 50%;
-    border: 4px solid var(--color-accent2);
-  }
-`
+import classNames from 'classnames'
 
 const Education = () => (
-  <Table>
-    <h3>
+  <div>
+    <h3 className={sectionTitleStyles}>
       <span>{_('Education')}</span>
     </h3>
-    <ul>
-      <li>
-        <div>
+    <ul className="p-3 border-l border-accent2">
+      <li className="">
+        <div className="flex justify-between w-full">
           <strong>{_('KeepCoding')}</strong>
           <span>2017-2018</span>
         </div>
         <div>
-          <span>
+          <span className="text-accent">
             <i>{_('Full Stack Javascript')}</i>
           </span>
           <span></span>
         </div>
       </li>
       <li>
-        <div>
+        <div className="flex justify-between w-full">
           <strong>Universidade de Santiago de Compostela</strong>
           <span>2011-2015</span>
         </div>
         <div>
-          <span>
+          <span className="text-accent">
             <i>{_('Computer Science')}</i>
           </span>
           <span></span>
         </div>
       </li>
     </ul>
-  </Table>
+  </div>
 )
+
+const sectionTitleStyles =
+  'mt-2 border-b border-accent2 p-1 font-semibold text-lg uppercase text-right'
 
 const Experience = () => {
   const jobs = [
     {
+      position: _('Senior Full Stack Developer'),
+      company: _('Maze'),
+      url: 'https://www.maze.co/',
+      period: 'Aug 2021-' + _('Today'),
+      time: _('New!'),
+      location: '100% ' + _('Remote'),
+      description: _('Fuel decision-making with rapid, remote testing'),
+      tech: _('TS, ReactJS, GraphQL, NodeJS, Neo4J'),
+    },
+    {
       position: _('Senior Frontend Developer'),
       company: _('Prezly'),
       url: 'https://www.prezly.com/',
-      period: '2020-' + _('Today'),
-      time: _('New!'),
+      period: 'Mar 2021-Jul 2021',
+      time: '5 ' + _('months'),
       location: '100% ' + _('Remote'),
       description: _(
         'Prezly helps you tell your brand stories through an advanced CRM, CMS, and campaign software'
@@ -124,23 +104,24 @@ const Experience = () => {
     },
   ]
   return (
-    <Table>
-      <h3>
-        <span>{_('Experience')}</span>
-      </h3>
-      <ul>
+    <div>
+      <h3 className={sectionTitleStyles}>{_('Experience')}</h3>
+      <ul className="py-3 pl-4 border-l border-accent2">
         {jobs.map((job) => (
-          <li key={job.period}>
-            <div>
+          <li
+            key={job.period}
+            className="p-2 my-2 border border-dashed rounded-md border-accent"
+          >
+            <div className="flex justify-between w-full">
               <strong>
-                <span className="position">{job.position}</span>,{' '}
+                <span className="italic text-accent">{job.position}</span>,{' '}
                 <a href={job.url}>
                   <i>{job.company}</i>
                 </a>
               </strong>
-              <span>{job.period}</span>
+              <span className="text-right">{job.period}</span>
             </div>
-            <div>
+            <div className="flex justify-between w-full my-2">
               <span>
                 <i>{job.location}</i>
               </span>
@@ -148,57 +129,25 @@ const Experience = () => {
                 <i>{job.time}</i>
               </span>
             </div>
-            <div style={{ marginTop: '.4rem' }}>
+            <div className="flex justify-between w-full mt-1 text-sm">
               <span>{job.description}.</span>
-              <span
-                style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}
-              >
+              <span className="font-semibold text-right text-accent">
                 {job.tech}
               </span>
             </div>
           </li>
         ))}
       </ul>
-      <style jsx>{`
-        a {
-          color: var(--color-fg);
-          border-bottom: 1px dashed var(--color-accent);
-        }
-        .position {
-          color: var(--color-accent);
-        }
-        li {
-          padding: 0.8rem 0;
-        }
-        li:not(:last-child) {
-          border-bottom: 1px dashed var(--color-accent);
-        }
-      `}</style>
-    </Table>
+    </div>
   )
 }
 
 const Skill = ({ text, Icon }) => (
   <>
-    <span className="skill">
+    <span className="flex flex-col items-center justify-center mr-3 text-accent">
       <Icon size="1.5rem" />
       <span>{_(text)}</span>
     </span>
-    <style jsx>{`
-      article {
-        display: inline-block;
-      }
-      .skill {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0.4rem 0.6rem;
-      }
-      .skill > * {
-        margin-top: 0.1rem;
-      }
-    `}</style>
   </>
 )
 
@@ -222,314 +171,160 @@ const secondarySkills = [
 
 const Skills = () => (
   <div>
-    <h3>
-      <span>{_('Skills')}</span>
-    </h3>
-    <h4>{_('Core')}</h4>
-    <article>
-      {mainSkills.map((s) => (
-        <React.Fragment key={s.name}>
-          <Skill text={s.name} Icon={s.icon} />
-        </React.Fragment>
-      ))}
-    </article>
-    <h4>{_('Secondary')}</h4>
-    <article>
-      {secondarySkills.map((s) => (
-        <React.Fragment key={s.name}>
-          <Skill text={s.name} Icon={s.icon} />
-        </React.Fragment>
-      ))}
-    </article>
-    <style jsx>{`
-      article {
-        display: flex;
-        max-width: 100%;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-      }
-      @media (max-width: 800px) {
-        article {
-          justify-content: center;
-        }
-      }
-      @media print {
-        article {
-          justify-content: flex-start;
-        }
-      }
-      h3 {
-        padding-bottom: 0.6rem;
-      }
-      h4 {
-        margin: 0.8rem 0 0 0.8rem;
-      }
-    `}</style>
+    <h3 className={sectionTitleStyles}>{_('Skills')}</h3>
+    <div className="p-3 border-l border-accent2">
+      <h4 className="text-lg font-semibold">{_('Core')}</h4>
+      <article className="flex flex-wrap">
+        {mainSkills.map((s) => (
+          <div key={s.name} className="my-2">
+            <Skill text={s.name} Icon={s.icon} />
+          </div>
+        ))}
+      </article>
+      <h4 className="my-2 text-lg font-semibold">{_('Secondary')}</h4>
+      <article className="flex flex-wrap">
+        {secondarySkills.map((s) => (
+          <div key={s.name} className="my-2">
+            <Skill text={s.name} Icon={s.icon} />
+          </div>
+        ))}
+      </article>
+    </div>
   </div>
 )
 
 const Other = () => (
   <>
-    <h3>
+    <h3 className={sectionTitleStyles}>
       <span>{_('Other')}</span>
     </h3>
-    <div>
-      {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
-      <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
-      <strong>{_('English')}</strong>.
+    <div className="p-3 border-l border-accent2">
+      <div className="">
+        {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
+        <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
+        <strong>{_('English')}</strong>.
+      </div>
+      <div>
+        {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
+        (Figma, Photoshop, Inkscape, Pixelmator, FCPX...).
+      </div>
+      <div>
+        <strong>{_('Currently working remotely')}.</strong>
+      </div>
     </div>
-    <div>
-      {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
-      (Figma, Photoshop, Inkscape, Pixelmator, FCPX...).
-    </div>
-    <div>
-      <strong>{_('Currently working remotely')}.</strong>
-    </div>
-    <style jsx>{`
-      div {
-        margin: 0.5rem 0 0.5rem 0.5rem;
-      }
-      h3 {
-        margin-top: 1rem;
-        padding-bottom: 0.7rem;
-      }
-    `}</style>
   </>
 )
-
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-top: 4px solid var(--color-accent);
-  color: var(--color-accent);
-  padding: 0 0.4rem 1rem;
-  h1,
-  h2 {
-    margin: 0;
-    font-size: 1.24rem;
-    @media (max-width: 800px) {
-      font-size: 1rem;
-    }
-  }
-  h2 {
-    font-style: italic;
-  }
-`
 
 const Side = () => (
   <>
-    <p>
-      <ImageWrapper>
-        <LazyLoadImage
-          src="/profile.jpg"
-          width={158}
-          height={158}
-          alt="Profile pic"
-          placeholder={
-            <img
-              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////2wBDARISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////wAARCACWAJYDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAQIDAAQFBv/EABgQAQEBAQEAAAAAAAAAAAAAAAABERIC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQACA//EABgRAQEBAQEAAAAAAAAAAAAAAAARARIC/9oADAMBAAIRAxEAPwD1PDo8oeXR5YbWh04cI2hpdLaia0ultJoKmtqWtoS2mlRlPKkvKeIyqShKwycPEDCUUjMDJPE8xeJ+YrGweCAItaW1rU7QWtLoWl1lqG0dT0dRisp5UpTygRaVSVCVSUhaU8qMp5UFdHU9HUFNZPWScEh40hsbDBTEoaJU6epVlrMClalDeYIlEGKQ0qejqEWlPKhptLMdEpunP0PRZjo6Hpz9N0k6emc/bJKSCbGbZJSVSp1lrEqlVPSVZ10zCUutS6y6ZhtHU9bUYro6lrahuLa3SPTdNMbi/TdOfpuizHR2Pbl7btCOrtnL2yT3AOWtMEqXpWpeg3iPpD0t6R9MuvnEqS01TtZdcwdDSaGpqKa2paGljcV6DpLQ0sar0HSXQdFjVem6R6DUyt0yPTIPrS0S1pjC1L0pUvQdMR9Iel/SHpl18o+kqp6SodcLS6NIjW0NACzo6XQAuejoaUNLGm0NKyZNrEZB9lpbQ0tpYa1K01qdobxP0j6UtSodM1KpVWkqjpmpUlVpbFF0kB7C2GM7qdKewtLG6UBBMgzMgDCyD6not9JdF6ajCl9EtJfRL6EOaa1O0LS6o3mtSswjXRcLigYYukrC2LYSxQVGwli1hLDGalgHsDDBSAfAwRUjGxlE9fsOkOy9NxhfovSPQdKKq9BqXQ6oaropaaURVRgFQ0C05aYKnYSxWkpiqdhcULigpMDFMDBDSYymMoq3QazNMNoazJNo6zInlPKzJHlMzJMDMQWlrMUAMwQY2MyI4zMC/9k="
-              alt="Profile pic"
-              width={158}
-              height={158}
-            />
-          }
-        />
-      </ImageWrapper>
-    </p>
-    <p>
-      <a href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
-    </p>
-    <p>
-      <a href="https://pablopunk.com">pablopunk.com</a>
-    </p>
-    <p>
+    <div className="my-4">
+      <LazyLoadImage
+        src="/profile.jpg"
+        width={158}
+        height={158}
+        alt="Profile pic"
+        className="border-4 rounded-full border-accent2"
+        placeholder={
+          <img
+            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////2wBDARISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////wAARCACWAJYDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAQIDAAQFBv/EABgQAQEBAQEAAAAAAAAAAAAAAAABERIC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQACA//EABgRAQEBAQEAAAAAAAAAAAAAAAARARIC/9oADAMBAAIRAxEAPwD1PDo8oeXR5YbWh04cI2hpdLaia0ultJoKmtqWtoS2mlRlPKkvKeIyqShKwycPEDCUUjMDJPE8xeJ+YrGweCAItaW1rU7QWtLoWl1lqG0dT0dRisp5UpTygRaVSVCVSUhaU8qMp5UFdHU9HUFNZPWScEh40hsbDBTEoaJU6epVlrMClalDeYIlEGKQ0qejqEWlPKhptLMdEpunP0PRZjo6Hpz9N0k6emc/bJKSCbGbZJSVSp1lrEqlVPSVZ10zCUutS6y6ZhtHU9bUYro6lrahuLa3SPTdNMbi/TdOfpuizHR2Pbl7btCOrtnL2yT3AOWtMEqXpWpeg3iPpD0t6R9MuvnEqS01TtZdcwdDSaGpqKa2paGljcV6DpLQ0sar0HSXQdFjVem6R6DUyt0yPTIPrS0S1pjC1L0pUvQdMR9Iel/SHpl18o+kqp6SodcLS6NIjW0NACzo6XQAuejoaUNLGm0NKyZNrEZB9lpbQ0tpYa1K01qdobxP0j6UtSodM1KpVWkqjpmpUlVpbFF0kB7C2GM7qdKewtLG6UBBMgzMgDCyD6not9JdF6ajCl9EtJfRL6EOaa1O0LS6o3mtSswjXRcLigYYukrC2LYSxQVGwli1hLDGalgHsDDBSAfAwRUjGxlE9fsOkOy9NxhfovSPQdKKq9BqXQ6oaropaaURVRgFQ0C05aYKnYSxWkpiqdhcULigpMDFMDBDSYymMoq3QazNMNoazJNo6zInlPKzJHlMzJMDMQWlrMUAMwQY2MyI4zMC/9k="
+            alt="Profile pic"
+            width={158}
+            height={158}
+          />
+        }
+      />
+    </div>
+    <a className="my-1 text-accent" href="mailto:pablo@pablopunk.com">
+      pablo@pablopunk.com
+    </a>
+    <a className="my-1 text-accent" href="https://pablopunk.com">
+      pablopunk.com
+    </a>
+    <div className="my-1">
       {_('Galiza')}, {_('Spain')} 🇪🇸
-    </p>
-    <style jsx>{`
-      p {
-        margin: 0.5rem 0;
-      }
-    `}</style>
+    </div>
   </>
 )
-
-const FlexRows = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  & > *:first-child {
-    margin-right: 1rem;
-  }
-  @media (max-width: 800px) {
-    flex-direction: column;
-    align-items: center;
-    & > *:first-child {
-      margin-right: 0;
-    }
-  }
-  @media print {
-    flex-direction: row;
-    align-items: flex-start;
-    & > *:first-child {
-      margin-right: 2rem;
-    }
-    font-size: 90%;
-  }
-`
-
-const FlexColumns = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 const toggleTheme = () =>
   typeof window !== 'undefined' ? window['__toggleDarkMode']() : null
 
+const Button: FunctionComponent<{
+  type?: string
+  className?: string
+  onClick?(): void
+}> = ({ children, type, ...props }) => (
+  <button
+    {...props}
+    className={classNames(
+      'flex outline-none border bg-accent text-bg items-center px-2 py-1 rounded-md shadow-md m-1 hover:bg-bg hover:text-fg transition-colors',
+      {
+        'bg-accent': type === 'primary' || type == null,
+        'bg-accent2': type === 'secondary',
+      },
+      props.className
+    )}
+  >
+    {children}
+  </button>
+)
+
 const TopButtons = () => (
-  <nav>
-    <div className="hide-print">
+  <nav className="flex items-center justify-center w-full mt-4 print:hidden">
+    <Button type="secondary">
       <a href="/en">English</a>
-      <span style={{ margin: '0 .3rem' }}>/</span>
+    </Button>
+    <span style={{ margin: '0 .3rem' }}>/</span>
+    <Button type="secondary" className="mr-4">
       <a href="/es">Spanish</a>
-    </div>
-    <div className="hide-print show-dark pointer" onClick={toggleTheme}>
+    </Button>
+    <Button onClick={toggleTheme} className="light-hidden">
       <BiSun /> {_('Light theme')}
-    </div>
-    <div className="hide-print show-light pointer" onClick={toggleTheme}>
+    </Button>
+    <Button onClick={toggleTheme} className="dark-hidden">
       <BiMoon /> {_('Dark theme')}
-    </div>
-    <div className="hide-print pointer" onClick={() => print()}>
+    </Button>
+    <Button onClick={() => print()}>
       <BiPrinter /> {_('Print')}
-    </div>
-    <style jsx>{`
-      nav {
-        padding: 0.5rem;
-        display: flex;
-        justify-content: center;
-      }
-      div {
-        margin: 0.5rem;
-      }
-    `}</style>
+    </Button>
   </nav>
 )
 
-export default function Index() {
+function Index() {
   init(useRouter().locale)
 
   return (
     <>
       <TopButtons />
-      <main>
-        <Header>
+      <main className="max-w-4xl p-5 mx-auto">
+        <div className="flex items-center justify-between px-2 py-1 text-xl font-semibold border-t-4 border-accent text-accent">
           <h1>{_('Pablo P Varela')}</h1>
-          <h2>{_('Javascript Developer')}</h2>
-        </Header>
-        <FlexRows>
-          <FlexColumns>
+          <h2 className="italic">{_('Javascript Developer')}</h2>
+        </div>
+        <div className="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start">
+          <div className="flex flex-col">
             <Side />
-          </FlexColumns>
-          <FlexColumns>
+          </div>
+          <div className="flex flex-col pl-4">
             <Experience />
             <Education />
             <Skills />
             <Other />
-          </FlexColumns>
-        </FlexRows>
+          </div>
+        </div>
       </main>
-      <footer>
-        {_('This CV is live on') + ' '}
-        <a href="https://cv.pablopunk.com">cv.pablopunk.com</a>
+      <footer className="relative mt-6">
+        <div className="absolute bottom-2 right-3">
+          <p className="">
+            {_('This CV is live on') + ' '}
+            <a className="text-accent" href="https://cv.pablopunk.com">
+              cv.pablopunk.com
+            </a>
+          </p>
+        </div>
       </footer>
-      <style global jsx>{`
-        * {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-            'Segoe UI Symbol';
-          box-sizing: border-box;
-        }
-        body {
-          padding: 0;
-          margin: 0;
-
-          --color-bg: white;
-          --color-fg: black;
-          --color-accent: lightseagreen;
-          --color-accent2: mediumorchid;
-
-          color: var(--color-fg);
-          background-color: var(--color-bg);
-        }
-        body.dark {
-          --color-bg: black;
-          --color-fg: white;
-          --color-accent: aquamarine;
-          --color-accent2: deeppink;
-        }
-        .show-dark,
-        .show-light {
-          display: none;
-        }
-        body.dark .show-dark {
-          display: initial;
-        }
-        body.light .show-light {
-          display: initial;
-        }
-        .pointer {
-          cursor: pointer;
-        }
-        @media print {
-          .hide-print {
-            display: none !important;
-          }
-        }
-        h3 > span {
-          background-color: var(--color-accent2);
-          color: var(--color-bg);
-          padding: 0.1rem 0.3rem;
-        }
-        @media print {
-          h3 > span {
-            background-color: var(--color-bg);
-            color: var(--color-accent2);
-          }
-        }
-        h3 {
-          margin: 0;
-        }
-        h4 {
-          margin: 0.5rem 0;
-        }
-        main {
-          max-width: 850px;
-          margin: 0 auto;
-          padding: 1rem;
-        }
-        a {
-          color: var(--color-accent);
-          text-decoration: none;
-        }
-        svg {
-          color: var(--color-accent);
-          vertical-align: middle;
-        }
-        footer {
-          font-size: 0.75rem;
-          text-align: right;
-          margin: 1rem;
-          position: fixed;
-          bottom: 0;
-          right: 0;
-        }
-        @media (max-width: 800px), @media print {
-          footer {
-            position: relative;
-          }
-        }
-      `}</style>
     </>
   )
 }
+
+export default Index

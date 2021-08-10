@@ -6,11 +6,11 @@ const translations = {
 
 let locale = 'en'
 
-export function init(l) {
+export function init(l): void {
   locale = l
 }
 
-export function _(str) {
+export function _(str): string {
   if (translations[locale]?.[str]) {
     return translations[locale]?.[str]
   }
