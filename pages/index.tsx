@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import { _, init } from '../translations/index'
 import {
@@ -22,9 +22,9 @@ const Education = () => (
     <h3 className={sectionTitleStyles}>
       <span>{_('Education')}</span>
     </h3>
-    <ul className="border-l border-accent2 p-3">
+    <ul className="p-3 border-l border-accent2">
       <li className="">
-        <div className="w-full flex justify-between">
+        <div className="flex justify-between w-full">
           <strong>{_('KeepCoding')}</strong>
           <span>2017-2018</span>
         </div>
@@ -36,7 +36,7 @@ const Education = () => (
         </div>
       </li>
       <li>
-        <div className="w-full flex justify-between">
+        <div className="flex justify-between w-full">
           <strong>Universidade de Santiago de Compostela</strong>
           <span>2011-2015</span>
         </div>
@@ -106,22 +106,22 @@ const Experience = () => {
   return (
     <div>
       <h3 className={sectionTitleStyles}>{_('Experience')}</h3>
-      <ul className="py-3 border-l border-accent2 pl-4">
+      <ul className="py-3 pl-4 border-l border-accent2">
         {jobs.map((job) => (
           <li
             key={job.period}
-            className="border my-2 p-2 rounded-md border-accent border-dashed"
+            className="p-2 my-2 border border-dashed rounded-md border-accent"
           >
-            <div className="flex w-full justify-between">
+            <div className="flex justify-between w-full">
               <strong>
-                <span className="text-accent italic">{job.position}</span>,{' '}
+                <span className="italic text-accent">{job.position}</span>,{' '}
                 <a href={job.url}>
                   <i>{job.company}</i>
                 </a>
               </strong>
               <span>{job.period}</span>
             </div>
-            <div className="flex w-full justify-between">
+            <div className="flex justify-between w-full">
               <span>
                 <i>{job.location}</i>
               </span>
@@ -129,9 +129,9 @@ const Experience = () => {
                 <i>{job.time}</i>
               </span>
             </div>
-            <div className="flex w-full justify-between mt-1 text-sm">
+            <div className="flex justify-between w-full mt-1 text-sm">
               <span>{job.description}.</span>
-              <span className="font-semibold text-accent text-right">
+              <span className="font-semibold text-right text-accent">
                 {job.tech}
               </span>
             </div>
@@ -144,7 +144,7 @@ const Experience = () => {
 
 const Skill = ({ text, Icon }) => (
   <>
-    <span className="mr-3 flex items-center flex-col justify-center text-accent">
+    <span className="flex flex-col items-center justify-center mr-3 text-accent">
       <Icon size="1.5rem" />
       <span>{_(text)}</span>
     </span>
@@ -172,8 +172,8 @@ const secondarySkills = [
 const Skills = () => (
   <div>
     <h3 className={sectionTitleStyles}>{_('Skills')}</h3>
-    <div className="border-l border-accent2 p-3">
-      <h4 className="font-semibold text-lg">{_('Core')}</h4>
+    <div className="p-3 border-l border-accent2">
+      <h4 className="text-lg font-semibold">{_('Core')}</h4>
       <article className="flex flex-wrap">
         {mainSkills.map((s) => (
           <div key={s.name} className="my-2">
@@ -181,7 +181,7 @@ const Skills = () => (
           </div>
         ))}
       </article>
-      <h4 className="font-semibold text-lg my-2">{_('Secondary')}</h4>
+      <h4 className="my-2 text-lg font-semibold">{_('Secondary')}</h4>
       <article className="flex flex-wrap">
         {secondarySkills.map((s) => (
           <div key={s.name} className="my-2">
@@ -198,7 +198,7 @@ const Other = () => (
     <h3 className={sectionTitleStyles}>
       <span>{_('Other')}</span>
     </h3>
-    <div className="border-l border-accent2 p-3">
+    <div className="p-3 border-l border-accent2">
       <div className="">
         {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
         <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
@@ -223,7 +223,7 @@ const Side = () => (
         width={158}
         height={158}
         alt="Profile pic"
-        className="rounded-full border-4 border-accent2"
+        className="border-4 rounded-full border-accent2"
         placeholder={
           <img
             src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////2wBDARISEhITEhQWFhQcHhseHCkmIiImKT4sMCwwLD5eO0U7O0U7XlNlUk1SZVOWdmhodpatkYqRrdK8vNL/+///////wAARCACWAJYDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAQIDAAQFBv/EABgQAQEBAQEAAAAAAAAAAAAAAAABERIC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQACA//EABgRAQEBAQEAAAAAAAAAAAAAAAARARIC/9oADAMBAAIRAxEAPwD1PDo8oeXR5YbWh04cI2hpdLaia0ultJoKmtqWtoS2mlRlPKkvKeIyqShKwycPEDCUUjMDJPE8xeJ+YrGweCAItaW1rU7QWtLoWl1lqG0dT0dRisp5UpTygRaVSVCVSUhaU8qMp5UFdHU9HUFNZPWScEh40hsbDBTEoaJU6epVlrMClalDeYIlEGKQ0qejqEWlPKhptLMdEpunP0PRZjo6Hpz9N0k6emc/bJKSCbGbZJSVSp1lrEqlVPSVZ10zCUutS6y6ZhtHU9bUYro6lrahuLa3SPTdNMbi/TdOfpuizHR2Pbl7btCOrtnL2yT3AOWtMEqXpWpeg3iPpD0t6R9MuvnEqS01TtZdcwdDSaGpqKa2paGljcV6DpLQ0sar0HSXQdFjVem6R6DUyt0yPTIPrS0S1pjC1L0pUvQdMR9Iel/SHpl18o+kqp6SodcLS6NIjW0NACzo6XQAuejoaUNLGm0NKyZNrEZB9lpbQ0tpYa1K01qdobxP0j6UtSodM1KpVWkqjpmpUlVpbFF0kB7C2GM7qdKewtLG6UBBMgzMgDCyD6not9JdF6ajCl9EtJfRL6EOaa1O0LS6o3mtSswjXRcLigYYukrC2LYSxQVGwli1hLDGalgHsDDBSAfAwRUjGxlE9fsOkOy9NxhfovSPQdKKq9BqXQ6oaropaaURVRgFQ0C05aYKnYSxWkpiqdhcULigpMDFMDBDSYymMoq3QazNMNoazJNo6zInlPKzJHlMzJMDMQWlrMUAMwQY2MyI4zMC/9k="
@@ -234,10 +234,10 @@ const Side = () => (
         }
       />
     </div>
-    <a className="text-accent my-1" href="mailto:pablo@pablopunk.com">
+    <a className="my-1 text-accent" href="mailto:pablo@pablopunk.com">
       pablo@pablopunk.com
     </a>
-    <a className="text-accent my-1" href="https://pablopunk.com">
+    <a className="my-1 text-accent" href="https://pablopunk.com">
       pablopunk.com
     </a>
     <div className="my-1">
@@ -249,7 +249,11 @@ const Side = () => (
 const toggleTheme = () =>
   typeof window !== 'undefined' ? window['__toggleDarkMode']() : null
 
-const Button = ({ children, type, ...props }) => (
+const Button: FunctionComponent<{
+  type?: string
+  className?: string
+  onClick?(): void
+}> = ({ children, type, ...props }) => (
   <button
     {...props}
     className={classNames(
@@ -266,7 +270,7 @@ const Button = ({ children, type, ...props }) => (
 )
 
 const TopButtons = () => (
-  <nav className="flex w-full items-center justify-center mt-4 print:hidden">
+  <nav className="flex items-center justify-center w-full mt-4 print:hidden">
     <Button type="secondary">
       <a href="/en">English</a>
     </Button>
@@ -292,8 +296,8 @@ function Index() {
   return (
     <>
       <TopButtons />
-      <main className="mx-auto max-w-4xl p-5">
-        <div className="flex items-center justify-between border-t-4 border-accent px-2 py-1 text-xl font-semibold text-accent">
+      <main className="max-w-4xl p-5 mx-auto">
+        <div className="flex items-center justify-between px-2 py-1 text-xl font-semibold border-t-4 border-accent text-accent">
           <h1>{_('Pablo P Varela')}</h1>
           <h2 className="italic">{_('Javascript Developer')}</h2>
         </div>
