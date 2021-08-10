@@ -119,9 +119,9 @@ const Experience = () => {
                   <i>{job.company}</i>
                 </a>
               </strong>
-              <span>{job.period}</span>
+              <span className="text-right">{job.period}</span>
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between w-full my-2">
               <span>
                 <i>{job.location}</i>
               </span>
@@ -301,7 +301,7 @@ function Index() {
           <h1>{_('Pablo P Varela')}</h1>
           <h2 className="italic">{_('Javascript Developer')}</h2>
         </div>
-        <div className="flex mt-4">
+        <div className="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start">
           <div className="flex flex-col">
             <Side />
           </div>
@@ -313,14 +313,15 @@ function Index() {
           </div>
         </div>
       </main>
-      <footer className="absolute bottom-2 right-3">
-        <div> </div>
-        <p className="">
-          {_('This CV is live on') + ' '}
-          <a className="text-accent" href="https://cv.pablopunk.com">
-            cv.pablopunk.com
-          </a>
-        </p>
+      <footer className="relative mt-6">
+        <div className="absolute bottom-2 right-3">
+          <p className="">
+            {_('This CV is live on') + ' '}
+            <a className="text-accent" href="https://cv.pablopunk.com">
+              cv.pablopunk.com
+            </a>
+          </p>
+        </div>
       </footer>
     </>
   )
