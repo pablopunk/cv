@@ -1,7 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { _, init } from '../translations/index'
-import styled from 'styled-components'
 import {
   SiJavascript,
   SiTypescript,
