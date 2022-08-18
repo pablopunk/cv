@@ -61,7 +61,7 @@ const Experience = () => {
       company: _('Maze'),
       url: 'https://www.maze.co/',
       period: 'Aug 2021-' + _('Today'),
-      time: _('New!'),
+      time: _('Currently'),
       location: '100% ' + _('Remote'),
       description: _('Fuel decision-making with rapid, remote testing'),
       tech: _('TS, ReactJS, GraphQL, NodeJS, Neo4J'),
@@ -86,7 +86,7 @@ const Experience = () => {
       time: '3 ' + _('years'),
       location: '100% ' + _('Remote'),
       description: _(
-        'We build the best open source CMS for journalists trusted by national news agencies and independent organisations all around the world'
+        'Open source CMS for journalists trusted by national news agencies and independent organisations all around the world'
       ),
       tech: _('Typescript, ReactJS'),
     },
@@ -301,7 +301,7 @@ function Index() {
           <h1>{_('Pablo P Varela')}</h1>
           <h2 className="italic">{_('Javascript Developer')}</h2>
         </div>
-        <div className="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start">
+        <div className="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start print:flex-row print:items-start">
           <div className="flex flex-col">
             <Side />
           </div>
