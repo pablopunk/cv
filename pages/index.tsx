@@ -10,7 +10,9 @@ import {
 	SiSwift,
 } from "react-icons/si";
 import { FaNodeJs } from "react-icons/fa";
-import { BiMoon, BiPrinter, BiSun } from "react-icons/bi";
+import { GoLightBulb } from "react-icons/go";
+import { BsFillMoonStarsFill } from "react-icons/bs";
+import { TiPrinter } from "react-icons/ti";
 import { SiNeo4J, SiNeovim } from "react-icons/si";
 import { TbSql, TbBrandNextjs, TbBrandTailwind, TbBrandFigma } from "react-icons/tb";
 import { AiFillApple, AiFillGithub } from "react-icons/ai";
@@ -299,19 +301,19 @@ const TopButtons = () => {
 					onClick={toggleTheme}
 					className="light-hidden text-accent hover:text-fg transition-colors text-sm flex items-center"
 				>
-					<BiSun /> {_("Light theme")}
+					{GoLightBulb as any} {_("Light theme")}
 				</button>
 				<button
 					onClick={toggleTheme}
 					className="dark-hidden text-accent hover:text-fg transition-colors text-sm flex items-center"
 				>
-					<BiMoon /> {_("Dark theme")}
+					{BsFillMoonStarsFill as any} {_("Dark theme")}
 				</button>
 				<button
 					onClick={() => print()}
 					className="text-accent hover:text-fg transition-colors text-sm flex items-center"
 				>
-					<BiPrinter /> {_("Print")}
+					{TiPrinter as any} {_("Print")}
 				</button>
 			</div>
 		</nav>
