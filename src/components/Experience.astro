@@ -9,11 +9,11 @@ const jobs = [
     position: _('Senior Full Stack Developer'),
     company: _('Maze'),
     url: 'https://www.maze.co/',
-    period: 'Aug 2021-' + _('Today'),
+    period: _('Aug') + ' 2021-' + _('Today'),
     time: _('Currently'),
     location: '100% ' + _('Remote'),
     description: _(
-      "Joined an early stage startup which I helped grow to be what it is today. I've worked on the most important part of the product (unmoderated studies on the web) and helped build the new Mobile App from scratch.",
+      "Joined an early stage startup which I helped grow to be what it is today. I've worked on the most important part of the product (unmoderated studies on the web) and helped build the new Mobile App from scratch",
     ),
     tech: _('TS, ReactJS, React Native, GraphQL, NodeJS, Neo4J, PostgreSQL'),
   },
@@ -21,7 +21,7 @@ const jobs = [
     position: _('Senior Frontend Developer'),
     company: _('Prezly'),
     url: 'https://www.prezly.com/',
-    period: 'Mar 2021-Jul 2021',
+    period: _('Mar') + ' 2021-' + _('Jul') + ' 2021',
     time: '5 ' + _('months'),
     location: '100% ' + _('Remote'),
     description: _('Helped build their new CMS-powered frontends from scratch'),
@@ -79,7 +79,7 @@ const jobs = [
             </span>
           </div>
           <div class="flex justify-between w-full mt-1 text-sm">
-            <span>{job.description}.</span>
+            <span>{job.description}</span>
             <span class="font-semibold text-right text-accent">{job.tech}</span>
           </div>
         </li>
