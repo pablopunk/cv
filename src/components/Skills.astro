@@ -1,5 +1,4 @@
 ---
-import type { TranslationFunction } from '../lib/translations'
 import Skill from './Skill.astro'
 import {
   SiTypescript,
@@ -19,11 +18,7 @@ import { AiFillApple, AiFillGithub } from 'react-icons/ai'
 import { DiLinux } from 'react-icons/di'
 import { SiElectron, SiLua, SiSwift } from 'react-icons/si'
 
-export interface Props {
-  _: TranslationFunction
-}
-
-const { _ } = Astro.props
+const _ = Astro.locals._
 
 const sectionTitleStyles =
   'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
@@ -55,24 +50,24 @@ const secondarySkills = [
   <h3 class={sectionTitleStyles}>{_('Skills')}</h3>
   <div class="p-3 border-l border-accent2">
     <h4 class="text-lg font-semibold">{_('Core')}</h4>
-    <article class="flex flex-wrap">
-      {
-        mainSkills.map((s) => (
-          <div class="my-2">
-            <Skill text={s.name} Icon={s.icon} _={_} />
-          </div>
-        ))
-      }
-    </article>
-    <h4 class="my-2 text-lg font-semibold">{_('Secondary')}</h4>
-    <article class="flex flex-wrap">
-      {
-        secondarySkills.map((s) => (
-          <div class="my-2">
-            <Skill text={s.name} Icon={s.icon} _={_} />
-          </div>
-        ))
-      }
-    </article>
+     <article class="flex flex-wrap">
+       {
+         mainSkills.map((s) => (
+           <div class="my-2">
+             <Skill text={s.name} Icon={s.icon} />
+           </div>
+         ))
+       }
+     </article>
+     <h4 class="my-2 text-lg font-semibold">{_('Secondary')}</h4>
+     <article class="flex flex-wrap">
+       {
+         secondarySkills.map((s) => (
+           <div class="my-2">
+             <Skill text={s.name} Icon={s.icon} />
+           </div>
+         ))
+       }
+     </article>
   </div>
 </div>

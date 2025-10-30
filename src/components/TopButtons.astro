@@ -1,14 +1,13 @@
 ---
 import ThemeToggle from './ThemeToggle'
 import PrintButton from './PrintButton'
-import type { TranslationFunction } from '../lib/translations'
 
 export interface Props {
   locale: string
-  _: TranslationFunction
 }
 
-const { locale, _ } = Astro.props
+const { locale } = Astro.props
+const _ = Astro.locals._
 const isEnglish = locale === 'en'
 const isSpanish = locale === 'es'
 ---

@@ -5,6 +5,12 @@ interface Props {
   darkThemeText: string
 }
 
+declare global {
+  interface Window {
+    __toggleDarkMode?: () => void
+  }
+}
+
 export default function ThemeToggle({ lightThemeText, darkThemeText }: Props) {
   const toggleTheme = () => {
     if (typeof window !== 'undefined' && window.__toggleDarkMode) {

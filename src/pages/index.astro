@@ -6,15 +6,14 @@ import Experience from '../components/Experience.astro'
 import Education from '../components/Education.astro'
 import Skills from '../components/Skills.astro'
 import Other from '../components/Other.astro'
-import { createTranslator } from '../lib/translations'
 
 const locale = 'en'
-const _ = createTranslator(locale)
+const _ = Astro.locals._
 ---
 
 <Layout title="Pablo P Varela - Full Stack Developer" lang={locale}>
   <div class="max-w-4xl p-5 mx-auto min-h-screen">
-    <TopButtons locale={locale} _={_} />
+    <TopButtons locale={locale} />
     <main>
       <div
         class="flex items-center justify-between px-2 py-1 text-md font-semibold border-t-4 border-accent text-accent"
@@ -26,13 +25,13 @@ const _ = createTranslator(locale)
         class="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start print:flex-row print:items-start"
       >
         <div class="flex flex-col">
-          <Side _={_} />
+          <Side />
         </div>
         <div class="flex flex-col pl-4">
-          <Experience _={_} />
-          <Education _={_} />
-          <Skills _={_} />
-          <Other _={_} />
+          <Experience />
+          <Education />
+          <Skills />
+          <Other />
         </div>
       </div>
     </main>

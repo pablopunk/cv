@@ -1,11 +1,5 @@
 ---
-import type { TranslationFunction } from '../lib/translations'
-
-export interface Props {
-  _: TranslationFunction
-}
-
-const { _ } = Astro.props
+const _ = Astro.locals._
 
 const sectionTitleStyles =
   'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'

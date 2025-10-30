@@ -1,13 +1,8 @@
 ---
 import { Image } from 'astro:assets'
 import profileImg from '../../public/profile.jpg'
-import type { TranslationFunction } from '../lib/translations'
 
-export interface Props {
-  _: TranslationFunction
-}
-
-const { _ } = Astro.props
+const _ = Astro.locals._
 ---
 
 <>

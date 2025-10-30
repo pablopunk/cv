@@ -1,10 +1,10 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
-declare global {
-  interface Window {
-    __toggleDarkMode: () => void
+import type { TranslationFunction } from './lib/translations'
+
+declare namespace App {
+  interface Locals {
+    _: TranslationFunction
   }
 }
-
-export {}

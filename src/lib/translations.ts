@@ -1,14 +1,14 @@
 import esTranslations from './es.json'
 
-const translations = {
+const translations: Record<string, Record<string, string>> = {
   es: esTranslations,
-} as const
+}
 
 export type TranslationFunction = (key: string) => string
 
 export function getTranslation(locale: string, key: string): string {
-  if (locale === 'en') return key // English is the default
-  return translations[locale as keyof typeof translations]?.[key] || key
+  if (locale === 'en') return key
+  return translations[locale]?.[key] || key
 }
 
 export function createTranslator(locale: string): TranslationFunction {
