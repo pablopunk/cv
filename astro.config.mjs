@@ -8,5 +8,12 @@ export default defineConfig({
   server: {
     host: true,
   },
-
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: true,
+    },
+  },
 })

@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import TopButtons from '../../components/TopButtons.astro'
+import Side from '../../components/Side.astro'
+import Experience from '../../components/Experience.astro'
+import Education from '../../components/Education.astro'
+import Skills from '../../components/Skills.astro'
+import Other from '../../components/Other.astro'
+
+const locale = 'en'
+const _ = Astro.locals._
+---
+
+<Layout title="Pablo P Varela - Full Stack Developer" lang={locale}>
+  <div class="max-w-4xl p-5 mx-auto min-h-screen">
+    <TopButtons locale={locale} />
+    <main>
+      <div
+        class="flex items-center justify-between px-2 py-1 text-md font-semibold border-t-4 border-accent text-accent"
+      >
+        <h1>{_('Pablo P Varela')}</h1>
+        <h2 class="italic">{_('Full Stack Developer')}</h2>
+      </div>
+      <div
+        class="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start print:flex-row print:items-start"
+      >
+        <div class="flex flex-col">
+          <Side />
+        </div>
+        <div class="flex flex-col pl-4">
+          <Experience />
+          <Education />
+          <Skills />
+          <Other />
+        </div>
+      </div>
+    </main>
+    <footer class="relative mt-6 text-sm italic">
+      <div class="absolute bottom-2 right-3">
+        <p class="hidden print:block">
+          {_('This CV is live on') + ' '}
+          <a class="text-accent" href="https://cv.pablopunk.com">cv.pablopunk.com</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+</Layout>
