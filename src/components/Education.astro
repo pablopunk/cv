@@ -1,0 +1,44 @@
+---
+import type { TranslationFunction } from '../lib/translations'
+
+export interface Props {
+  _: TranslationFunction
+}
+
+const { _ } = Astro.props
+
+const sectionTitleStyles =
+  'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
+---
+
+<div>
+  <h3 class={sectionTitleStyles}>
+    <span>{_('Education')}</span>
+  </h3>
+  <ul class="p-3 border-l border-accent2">
+    <li class="">
+      <div class="flex justify-between w-full">
+        <strong>{_('KeepCoding')}</strong>
+        <span>2017-2018</span>
+      </div>
+      <div>
+        <span class="text-accent">
+          <i>{_('Full Stack Javascript')}</i>
+        </span>
+        <span></span>
+      </div>
+    </li>
+    <li>
+      <div class="flex justify-between w-full">
+        <strong>Universidade de Santiago de Compostela</strong>
+        <span>2011-2015</span>
+      </div>
+      <div>
+        <span class="text-accent">
+          <i>{_('Computer Science')}</i>
+        </span>
+        <span></span>
+      </div>
+    </li>
+  </ul>
+</div>

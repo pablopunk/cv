@@ -1,0 +1,64 @@
+---
+import ThemeToggle from './ThemeToggle'
+import PrintButton from './PrintButton'
+import type { TranslationFunction } from '../lib/translations'
+
+export interface Props {
+  locale: string
+  _: TranslationFunction
+}
+
+const { locale, _ } = Astro.props
+const isEnglish = locale === 'en'
+const isSpanish = locale === 'es'
+---
+
+<nav class="flex items-center justify-between w-full mb-6 print:hidden py-3 px-3 bg-white dark:bg-bg2 border-b border-accent2/20 dark:border-accent2/20 rounded-lg text-xl dark:shadow-none shadow-sm">
+  <div class="flex items-center gap-1">
+    {
+      isEnglish && (
+        <span class="cursor-default inline-flex items-center justify-center whitespace-nowrap font-medium h-8 rounded-md px-2.5 py-3 opacity-60">
+          🇺🇸 English
+        </span>
+      )
+    }
+    {
+      !isEnglish && (
+        <a
+          href="/en"
+          class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
+        >
+          🇺🇸 English
+        </a>
+      )
+    }
+    {
+      isSpanish && (
+        <span class="cursor-default inline-flex items-center justify-center whitespace-nowrap font-medium h-8 rounded-md px-2.5 py-3 opacity-60">
+          🇪🇸 Español
+        </span>
+      )
+    }
+    {
+      !isSpanish && (
+        <a
+          href="/es"
+          class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
+        >
+          🇪🇸 Español
+        </a>
+      )
+    }
+  </div>
+  <div class="flex items-center gap-1">
+    <ThemeToggle
+      client:load
+      lightThemeText={_('Light theme')}
+      darkThemeText={_('Dark theme')}
+    />
+    <PrintButton
+      client:load
+      printText={_('Print')}
+    />
+  </div>
+</nav>

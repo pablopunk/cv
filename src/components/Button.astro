@@ -1,0 +1,29 @@
+---
+import classNames from 'classnames'
+
+export interface Props {
+  type?: 'primary' | 'secondary' | 'minimal'
+  className?: string
+  onClick?: string
+}
+
+const { type = 'primary', className, onClick, ...props } = Astro.props
+
+const classes = classNames(
+  'flex outline-none border items-center px-2 py-1 rounded-md shadow-md m-1 transition-colors',
+  {
+    'bg-accent text-bg hover:bg-bg hover:text-fg': type === 'primary',
+    'bg-accent2 text-bg hover:bg-bg hover:text-fg': type === 'secondary',
+    'border-transparent text-accent hover:text-fg': type === 'minimal',
+  },
+  className,
+)
+---
+
+<button
+  class={classes}
+  onclick={onClick}
+  {...props}
+>
+  <slot />
+</button>

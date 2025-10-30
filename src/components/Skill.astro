@@ -1,0 +1,16 @@
+---
+import type { TranslationFunction } from '../lib/translations'
+
+export interface Props {
+  text: string
+  Icon: any
+  _: TranslationFunction
+}
+
+const { text, Icon, _ } = Astro.props
+---
+
+<span class="flex flex-col items-center justify-center mr-3 text-accent">
+  <Icon size="1rem" />
+  <span>{_(text)}</span>
+</span>

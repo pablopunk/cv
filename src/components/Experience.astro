@@ -1,0 +1,95 @@
+---
+import type { TranslationFunction } from '../lib/translations'
+
+export interface Props {
+  _: TranslationFunction
+}
+
+const { _ } = Astro.props
+
+const sectionTitleStyles =
+  'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
+
+const jobs = [
+  {
+    position: _('Senior Full Stack Developer'),
+    company: _('Maze'),
+    url: 'https://www.maze.co/',
+    period: 'Aug 2021-' + _('Today'),
+    time: _('Currently'),
+    location: '100% ' + _('Remote'),
+    description: _(
+      "Joined an early stage startup which I helped grow to be what it is today. I've worked on the most important part of the product (unmoderated studies on the web) and helped build the new Mobile App from scratch.",
+    ),
+    tech: _('TS, ReactJS, React Native, GraphQL, NodeJS, Neo4J, PostgreSQL'),
+  },
+  {
+    position: _('Senior Frontend Developer'),
+    company: _('Prezly'),
+    url: 'https://www.prezly.com/',
+    period: 'Mar 2021-Jul 2021',
+    time: '5 ' + _('months'),
+    location: '100% ' + _('Remote'),
+    description: _('Helped build their new CMS-powered frontends from scratch'),
+    tech: _('Typescript, ReactJS, NextJS'),
+  },
+  {
+    position: _('Senior Frontend Developer'),
+    company: _('Sourcefabric'),
+    url: 'https://www.superdesk.org/',
+    period: '2018-2020',
+    time: '3 ' + _('years'),
+    location: '100% ' + _('Remote'),
+    description: _(
+      'Contributed heavily to the new editor of the open source CMS for journalists trusted by national news agencies and independent organisations all around the world',
+    ),
+    tech: _('Typescript, ReactJS'),
+  },
+  {
+    position: _('Full Stack Web Developer'),
+    company: _('Stang Decision Systems'),
+    url: 'https://stangds.com',
+    period: '2016-2018',
+    time: '2 ' + _('years'),
+    location: _('Marquette, Michigan (USA) and remote'),
+    description: _(
+      'Part of a team of 3 developers, we built a tool to automate anonymous hiring for companies',
+    ),
+    tech: _('PHP, JS, HTML/CSS, MySQL'),
+  },
+]
+---
+
+<div>
+  <h3 class={sectionTitleStyles}>{_('Experience')}</h3>
+  <ul class="py-3 pl-4 border-l border-accent2">
+    {
+      jobs.map((job) => (
+        <li class="p-2 my-2 border border-dashed rounded-md border-accent">
+          <div class="flex justify-between w-full">
+            <strong>
+              <span class="italic text-accent">{job.position}</span>
+              {_(' at ')}
+              <a href={job.url}>
+                <i>{job.company}</i>
+              </a>
+            </strong>
+            <span class="text-right">{job.period}</span>
+          </div>
+          <div class="flex justify-between w-full my-2 text-sm">
+            <span>
+              <i>{job.location}</i>
+            </span>
+            <span>
+              <i>{job.time}</i>
+            </span>
+          </div>
+          <div class="flex justify-between w-full mt-1 text-sm">
+            <span>{job.description}.</span>
+            <span class="font-semibold text-right text-accent">{job.tech}</span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>
