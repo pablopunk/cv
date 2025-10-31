@@ -49,6 +49,14 @@
 
 ## Source Directory Structure (src/)
 
+## Vercel Configuration (vercel.json)
+
+- Defines HTTP redirects for tracking/counting scripts
+- Redirects `/count.js` and localized `/es/count.js`, `/en/count.js` to `https://gc.zgo.at/count.js`
+- Redirects `/goat` and localized `/es/goat`, `/en/goat` to `https://cvpablopunk.goatcounter.com/count`
+
+## Source Directory Structure (src/)
+
 - components/
   - Astro components like Button, CVPage, Education, Experience, LanguagePicker, Other, Section, Side, Skill, Skills, T, TopButtons
   - React components: PrintButton.tsx, ThemeToggle.tsx
