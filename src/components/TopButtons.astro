@@ -1,15 +1,16 @@
 ---
 import ThemeToggle from './ThemeToggle'
 import PrintButton from './PrintButton'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { getLangFromUrl } from '../i18n/utils'
 
-export interface Props {
-  locale: string
-}
-
-const { locale } = Astro.props
-const _ = Astro.locals._
+const locale = getLangFromUrl(Astro.url)
+const t = Astro.locals.t
 const isEnglish = locale === 'en'
 const isSpanish = locale === 'es'
+
+// Get the current page path without locale prefix for language switching
+const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
 ---
 
 <nav class="flex items-center justify-between w-full mb-6 print:hidden py-3 px-3 bg-white dark:bg-bg2 border-b border-accent2/20 dark:border-accent2/20 rounded-lg text-xl dark:shadow-none shadow-sm">
@@ -24,7 +25,7 @@ const isSpanish = locale === 'es'
     {
       !isEnglish && (
         <a
-          href="/"
+          href={getRelativeLocaleUrl('en', currentPath)}
           class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
         >
           🇺🇸 English
@@ -41,7 +42,7 @@ const isSpanish = locale === 'es'
     {
       !isSpanish && (
         <a
-          href="/es"
+          href={getRelativeLocaleUrl('es', currentPath)}
           class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
         >
           🇪🇸 Español
@@ -52,12 +53,20 @@ const isSpanish = locale === 'es'
   <div class="flex items-center gap-1">
     <ThemeToggle
       client:load
-      lightThemeText={_('Light theme')}
-      darkThemeText={_('Dark theme')}
+      lightThemeText={t('theme.light')}
+      darkThemeText={t('theme.dark')}
     />
     <PrintButton
       client:load
-      printText={_('Print')}
+      printText={t('print.button')}
+      tooltipTitle={t('print.tooltip.title')}
+      tooltipItems={[
+        t('print.tooltip.lightTheme'),
+        t('print.tooltip.a4Paper'),
+        t('print.tooltip.minMargins'),
+        t('print.tooltip.noHeaders'),
+        t('print.tooltip.printColor')
+      ]}
     />
   </div>
 </nav>

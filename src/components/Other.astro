@@ -1,26 +1,19 @@
 ---
-const _ = Astro.locals._
+import { marked } from 'marked'
+
+const t = Astro.locals.t
 
 const sectionTitleStyles =
   'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
+
+// Render markdown content
+const content = marked.parse(t('other.content'))
 ---
 
 <>
   <h3 class={sectionTitleStyles}>
-    <span>{_('Other')}</span>
+    <span>{t('section.other')}</span>
   </h3>
-  <div class="p-3 border-l border-accent2">
-    <div class="">
-      {_('Two native languages')} (<strong>{_('Spanish')}</strong> {_('and')}{' '}
-      <strong>{_('Galician')}</strong>) {_('and advanced')}{' '}
-      <strong>{_('English')}</strong>.
-    </div>
-    <div>
-      {_('Comfortable with')} <strong>{_('graphic design tools')}</strong>{' '}
-      (Figma, Photoshop, Pixelmator...).
-    </div>
-    <div>
-      <strong>{_('Most of my career has been remote')}.</strong>
-    </div>
+  <div class="p-3 border-l border-accent2 prose prose-sm max-w-none dark:prose-invert prose-strong:text-fg dark:prose-strong:text-fg" set:html={content}>
   </div>
 </>

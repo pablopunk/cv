@@ -1,4 +1,10 @@
 ---
-export const prerender = false
-return Astro.redirect('/en')
+import Layout from '../layouts/Layout.astro'
+import CVPage from '../components/CVPage.astro'
+
+export const prerender = true
 ---
+
+<Layout title="Pablo P Varela - Full Stack Developer">
+  <CVPage />
+</Layout>

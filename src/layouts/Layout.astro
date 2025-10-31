@@ -1,13 +1,19 @@
 ---
-import { createTranslator } from '../lib/translations'
+import { getAbsoluteLocaleUrl } from 'astro:i18n'
+import { getLangFromUrl } from '../i18n/utils'
 
 export interface Props {
   title: string
-  lang: string
 }
 
-const { title, lang } = Astro.props
-Astro.locals._ = createTranslator(lang)
+const { title } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+
+// Generate alternate language URLs for SEO
+const alternateUrls = {
+  en: getAbsoluteLocaleUrl('en', Astro.url.pathname.replace(/^\/(en|es)/, '')),
+  es: getAbsoluteLocaleUrl('es', Astro.url.pathname.replace(/^\/(en|es)/, ''))
+}
 ---
 
 <!doctype html>
@@ -18,6 +24,12 @@ Astro.locals._ = createTranslator(lang)
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    
+    <!-- Alternate language links for SEO -->
+    <link rel="alternate" href={alternateUrls.en} hreflang="en" />
+    <link rel="alternate" href={alternateUrls.es} hreflang="es" />
+    <link rel="alternate" href={alternateUrls.en} hreflang="x-default" />
+    
     <script is:inline>
       // Dark mode script to prevent FOUC
       ;(function () {

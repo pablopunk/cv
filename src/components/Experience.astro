@@ -1,61 +1,56 @@
 ---
-const _ = Astro.locals._
+import { marked } from 'marked'
+const t = Astro.locals.t
 
 const sectionTitleStyles =
   'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
 
 const jobs = [
   {
-    position: _('Senior Full Stack Developer'),
-    company: _('Maze'),
+    position: t('position.senior.fullstack'),
+    company: t('company.maze'),
     url: 'https://www.maze.co/',
-    period: _('Aug') + ' 2021-' + _('Today'),
-    time: _('Currently'),
-    location: '100% ' + _('Remote'),
-    description: _(
-      "Joined an early stage startup which I helped grow to be what it is today. I've worked on the most important part of the product (unmoderated studies on the web) and helped build the new Mobile App from scratch",
-    ),
-    tech: _('TS, ReactJS, React Native, GraphQL, NodeJS, Neo4J, PostgreSQL'),
+    period: t('month.aug') + ' 2021-' + t('time.today'),
+    time: t('time.currently'),
+    location: '100% ' + t('location.remote'),
+    description: t('job.maze.description'),
+    tech: t('job.maze.tech'),
   },
   {
-    position: _('Senior Frontend Developer'),
-    company: _('Prezly'),
+    position: t('position.senior.frontend'),
+    company: t('company.prezly'),
     url: 'https://www.prezly.com/',
-    period: _('Mar') + ' 2021-' + _('Jul') + ' 2021',
-    time: '5 ' + _('months'),
-    location: '100% ' + _('Remote'),
-    description: _('Helped build their new CMS-powered frontends from scratch'),
-    tech: _('Typescript, ReactJS, NextJS'),
+    period: t('month.mar') + ' 2021-' + t('month.jul') + ' 2021',
+    time: '5 ' + t('time.months'),
+    location: '100% ' + t('location.remote'),
+    description: t('job.prezly.description'),
+    tech: t('job.prezly.tech'),
   },
   {
-    position: _('Senior Frontend Developer'),
-    company: _('Sourcefabric'),
+    position: t('position.senior.frontend'),
+    company: t('company.sourcefabric'),
     url: 'https://www.superdesk.org/',
     period: '2018-2020',
-    time: '3 ' + _('years'),
-    location: '100% ' + _('Remote'),
-    description: _(
-      'Contributed heavily to the new editor of the open source CMS for journalists trusted by national news agencies and independent organisations all around the world',
-    ),
-    tech: _('Typescript, ReactJS'),
+    time: '3 ' + t('time.years'),
+    location: '100% ' + t('location.remote'),
+    description: t('job.sourcefabric.description'),
+    tech: t('job.sourcefabric.tech'),
   },
   {
-    position: _('Full Stack Web Developer'),
-    company: _('Stang Decision Systems'),
+    position: t('position.fullstack'),
+    company: t('company.stang'),
     url: 'https://stangds.com',
     period: '2016-2018',
-    time: '2 ' + _('years'),
-    location: _('Marquette, Michigan (USA) and remote'),
-    description: _(
-      'Part of a team of 3 developers, we built a tool to automate anonymous hiring for companies',
-    ),
-    tech: _('PHP, JS, HTML/CSS, MySQL'),
+    time: '2 ' + t('time.years'),
+    location: t('location.marquette'),
+    description: t('job.stang.description'),
+    tech: t('job.stang.tech'),
   },
 ]
 ---
 
 <div>
-  <h3 class={sectionTitleStyles}>{_('Experience')}</h3>
+  <h3 class={sectionTitleStyles}>{t('section.experience')}</h3>
   <ul class="py-3 pl-4 border-l border-accent2">
     {
       jobs.map((job) => (
@@ -63,7 +58,7 @@ const jobs = [
           <div class="flex justify-between w-full">
             <strong>
               <span class="italic text-accent">{job.position}</span>
-              {_(' at ')}
+              {t('time.at')}
               <a href={job.url}>
                 <i>{job.company}</i>
               </a>
@@ -79,7 +74,7 @@ const jobs = [
             </span>
           </div>
           <div class="flex justify-between w-full mt-1 text-sm">
-            <span>{job.description}</span>
+            <span set:html={marked.parseInline(job.description)} />
             <span class="font-semibold text-right text-accent">{job.tech}</span>
           </div>
         </li>

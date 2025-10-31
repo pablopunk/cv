@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 import profileImg from '../../public/profile.jpg'
 
-const _ = Astro.locals._
+const t = Astro.locals.t
 ---
 
 <>
@@ -18,6 +18,6 @@ const _ = Astro.locals._
   <a class="my-1 text-accent" href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
   <a class="my-1 text-accent" href="https://pablopunk.com">pablopunk.com</a>
   <div class="my-1">
-    {_('València')}, {_('Spain')} 🇪🇸
+    {t('personal.location')}, {t('personal.country')} 🇪🇸
   </div>
 </>

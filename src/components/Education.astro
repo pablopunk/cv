@@ -1,5 +1,5 @@
 ---
-const _ = Astro.locals._
+const t = Astro.locals.t
 
 const sectionTitleStyles =
   'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
@@ -7,17 +7,17 @@ const sectionTitleStyles =
 
 <div>
   <h3 class={sectionTitleStyles}>
-    <span>{_('Education')}</span>
+    <span>{t('section.education')}</span>
   </h3>
   <ul class="p-3 border-l border-accent2">
     <li class="">
       <div class="flex justify-between w-full">
-        <strong>{_('KeepCoding')}</strong>
+        <strong>{t('education.keepcoding')}</strong>
         <span>2017-2018</span>
       </div>
       <div>
         <span class="text-accent">
-          <i>{_('Full Stack Javascript')}</i>
+          <i>{t('education.keepcoding.degree')}</i>
         </span>
         <span></span>
       </div>
@@ -29,7 +29,7 @@ const sectionTitleStyles =
       </div>
       <div>
         <span class="text-accent">
-          <i>{_('Computer Science')}</i>
+          <i>{t('education.usc.degree')}</i>
         </span>
         <span></span>
       </div>

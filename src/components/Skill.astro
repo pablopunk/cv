@@ -5,10 +5,10 @@ export interface Props {
 }
 
 const { text, Icon } = Astro.props
-const _ = Astro.locals._
+const t = Astro.locals.t
 ---
 
 <span class="flex flex-col items-center justify-center mr-3 text-accent">
   <Icon size="1rem" />
-  <span>{_(text)}</span>
+  <span>{t(text)}</span>
 </span>

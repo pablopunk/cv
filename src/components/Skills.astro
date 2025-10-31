@@ -18,38 +18,38 @@ import { AiFillApple, AiFillGithub } from 'react-icons/ai'
 import { DiLinux } from 'react-icons/di'
 import { SiElectron, SiLua, SiSwift } from 'react-icons/si'
 
-const _ = Astro.locals._
+const t = Astro.locals.t
 
 const sectionTitleStyles =
   'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
 
 const mainSkills = [
-  { name: 'Typescript', icon: SiTypescript },
-  { name: 'ReactJS', icon: SiReact },
-  { name: 'NextJS', icon: TbBrandNextjs },
-  { name: 'Tailwind', icon: TbBrandTailwind },
-  { name: 'NodeJS', icon: FaNodeJs },
-  { name: 'GitHub', icon: AiFillGithub },
-  { name: 'macOS', icon: AiFillApple },
-  { name: 'Linux', icon: DiLinux },
+  { name: 'skill.typescript', icon: SiTypescript },
+  { name: 'skill.react', icon: SiReact },
+  { name: 'skill.nextjs', icon: TbBrandNextjs },
+  { name: 'skill.tailwind', icon: TbBrandTailwind },
+  { name: 'skill.nodejs', icon: FaNodeJs },
+  { name: 'skill.github', icon: AiFillGithub },
+  { name: 'skill.macos', icon: AiFillApple },
+  { name: 'skill.linux', icon: DiLinux },
 ]
 
 const secondarySkills = [
-  { name: 'Neo4J', icon: SiNeo4J },
-  { name: 'SQL', icon: TbSql },
-  { name: 'MongoDB', icon: SiMongodb },
-  { name: 'Electron', icon: SiElectron },
-  { name: 'Neovim', icon: SiNeovim },
-  { name: 'Figma', icon: TbBrandFigma },
-  { name: 'Lua', icon: SiLua },
-  { name: 'Swift', icon: SiSwift },
+  { name: 'skill.neo4j', icon: SiNeo4J },
+  { name: 'skill.sql', icon: TbSql },
+  { name: 'skill.mongodb', icon: SiMongodb },
+  { name: 'skill.electron', icon: SiElectron },
+  { name: 'skill.neovim', icon: SiNeovim },
+  { name: 'skill.figma', icon: TbBrandFigma },
+  { name: 'skill.lua', icon: SiLua },
+  { name: 'skill.swift', icon: SiSwift },
 ]
 ---
 
 <div>
-  <h3 class={sectionTitleStyles}>{_('Skills')}</h3>
+  <h3 class={sectionTitleStyles}>{t('section.skills')}</h3>
   <div class="p-3 border-l border-accent2">
-    <h4 class="text-lg font-semibold">{_('Core')}</h4>
+    <h4 class="text-lg font-semibold">{t('section.skills.core')}</h4>
      <article class="flex flex-wrap">
        {
          mainSkills.map((s) => (
@@ -59,7 +59,7 @@ const secondarySkills = [
          ))
        }
      </article>
-     <h4 class="my-2 text-lg font-semibold">{_('Secondary')}</h4>
+     <h4 class="my-2 text-lg font-semibold">{t('section.skills.secondary')}</h4>
      <article class="flex flex-wrap">
        {
          secondarySkills.map((s) => (

@@ -1,0 +1,11 @@
+---
+// Translation component helper
+export interface Props {
+  key: string
+}
+
+const { key } = Astro.props
+const t = Astro.locals.t
+---
+
+{t(key)}

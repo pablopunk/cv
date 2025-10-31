@@ -1,0 +1,45 @@
+---
+import TopButtons from './TopButtons.astro'
+import Side from './Side.astro'
+import Experience from './Experience.astro'
+import Education from './Education.astro'
+import Skills from './Skills.astro'
+import Other from './Other.astro'
+import { getLangFromUrl } from '../i18n/utils'
+
+const locale = getLangFromUrl(Astro.url)
+const t = Astro.locals.t
+---
+
+<div class="max-w-4xl p-5 mx-auto min-h-screen">
+  <TopButtons locale={locale} />
+  <main>
+    <div
+      class="flex items-center justify-between px-2 py-1 text-md font-semibold border-t-4 border-accent text-accent"
+    >
+      <h1>{t('personal.name')}</h1>
+      <h2 class="italic">{t('personal.title')}</h2>
+    </div>
+    <div
+      class="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start print:flex-row print:items-start"
+    >
+      <div class="flex flex-col">
+        <Side />
+      </div>
+      <div class="flex flex-col pl-4">
+        <Experience />
+        <Education />
+        <Skills />
+        <Other />
+      </div>
+    </div>
+  </main>
+  <footer class="relative mt-6 text-sm italic">
+    <div class="absolute bottom-2 right-3">
+      <p class="hidden print:block">
+        {t('footer.cv.source') + ' '}
+        <a class="text-accent" href="https://cv.pablopunk.com">cv.pablopunk.com</a>
+      </p>
+    </div>
+  </footer>
+</div>
