@@ -47,7 +47,6 @@
   - borderColor default set to CSS variable
 - Print media query screen added
 
-## Source Directory Structure (src/)
 
 ## Vercel Configuration (vercel.json)
 
@@ -55,24 +54,7 @@
 - Redirects `/count.js` and localized `/es/count.js`, `/en/count.js` to `https://gc.zgo.at/count.js`
 - Redirects `/goat` and localized `/es/goat`, `/en/goat` to `https://cvpablopunk.goatcounter.com/count`
 
-## Source Directory Structure (src/)
 
-- components/
-  - Astro components like Button, CVPage, Education, Experience, LanguagePicker, Other, Section, Side, Skill, Skills, T, TopButtons
-  - React components: PrintButton.tsx, ThemeToggle.tsx
-- i18n/
-  - translations.ts, utils.ts
-- layouts/
-  - Layout.astro
-- pages/
-  - index.astro
-  - es/index.astro (Spanish locale)
-- styles/
-  - global.css
-- types/
-  - astro.d.ts
-- env.d.ts
-- middleware.ts
 
 ---
 This document summarizes key configuration, scripts and structure relevant for LLM agents working with the cv-astro repository.
