@@ -1,7 +1,7 @@
 {
   "functions": {
     "**/*": {
-      "runtime": "nodejs@22"
+      "runtime": "node@22"
     }
   }
 }
