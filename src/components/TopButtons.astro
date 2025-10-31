@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
     {
       isEnglish && (
         <span class="cursor-default inline-flex items-center justify-center whitespace-nowrap font-medium h-8 rounded-md px-2.5 py-3 opacity-60">
-          🇺🇸 English
+          🇺🇸 <span class="hidden sm:inline">English</span>
         </span>
       )
     }
@@ -28,14 +28,14 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
           href={getRelativeLocaleUrl('en', currentPath)}
           class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
         >
-          🇺🇸 English
+          🇺🇸 <span class="hidden sm:inline">English</span>
         </a>
       )
     }
     {
       isSpanish && (
         <span class="cursor-default inline-flex items-center justify-center whitespace-nowrap font-medium h-8 rounded-md px-2.5 py-3 opacity-60">
-          🇪🇸 Español
+          🇪🇸 <span class="hidden sm:inline">Español</span>
         </span>
       )
     }
@@ -45,7 +45,7 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
           href={getRelativeLocaleUrl('es', currentPath)}
           class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
         >
-          🇪🇸 Español
+          🇪🇸 <span class="hidden sm:inline">Español</span>
         </a>
       )
     }
