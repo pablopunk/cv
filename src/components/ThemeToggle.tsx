@@ -1,4 +1,4 @@
-import {BiSun,BiMoon} from 'react-icons/bi'
+import { BiMoon, BiSun } from 'react-icons/bi'
 
 interface Props {
   lightThemeText: string

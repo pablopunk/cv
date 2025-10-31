@@ -1,11 +1,11 @@
 ---
-import TopButtons from './TopButtons.astro'
-import Side from './Side.astro'
-import Experience from './Experience.astro'
-import Education from './Education.astro'
-import Skills from './Skills.astro'
-import Other from './Other.astro'
 import { getLangFromUrl } from '../i18n/utils'
+import Education from './Education.astro'
+import Experience from './Experience.astro'
+import Other from './Other.astro'
+import Side from './Side.astro'
+import Skills from './Skills.astro'
+import TopButtons from './TopButtons.astro'
 
 const locale = getLangFromUrl(Astro.url)
 const t = Astro.locals.t

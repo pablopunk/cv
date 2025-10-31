@@ -1,12 +1,9 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
-  },
-  "organizeImports": {
-    "enabled": true
   },
   "linter": {
     "enabled": true,
@@ -38,7 +35,24 @@
     }
   },
   "files": {
-    "include": ["src/**/*.{js,ts,jsx,tsx,astro}", "*.{js,ts,mjs,cjs}"],
-    "ignore": ["node_modules", "dist", ".astro"]
-  }
+    "includes": ["src/**/*.{js,ts,jsx,tsx,astro}", "*.{js,ts,mjs,cjs}"],
+    "ignoreUnknown": true
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          }
+        }
+      }
+    }
+  ]
 }

@@ -1,5 +1,5 @@
-import { TiPrinter } from 'react-icons/ti'
 import * as Tooltip from '@radix-ui/react-tooltip'
+import { TiPrinter } from 'react-icons/ti'
 
 interface Props {
   printText: string
@@ -7,11 +7,7 @@ interface Props {
   tooltipItems: string[]
 }
 
-export default function PrintButton({ 
-  printText, 
-  tooltipTitle,
-  tooltipItems
-}: Props) {
+export default function PrintButton({ printText, tooltipTitle, tooltipItems }: Props) {
   return (
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={0}>

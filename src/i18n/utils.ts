@@ -1,5 +1,5 @@
-import { translations, defaultLang, type Language, type TranslationKey } from './translations'
 import { getRelativeLocaleUrl } from 'astro:i18n'
+import { defaultLang, type Language, type TranslationKey, translations } from './translations'
 
 export function getLangFromUrl(url: URL): Language {
   const [, lang] = url.pathname.split('/')

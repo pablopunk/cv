@@ -1,8 +1,8 @@
 ---
-import ThemeToggle from './ThemeToggle'
-import PrintButton from './PrintButton'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { getLangFromUrl } from '../i18n/utils'
+import PrintButton from './PrintButton'
+import ThemeToggle from './ThemeToggle'
 
 const locale = getLangFromUrl(Astro.url)
 const t = Astro.locals.t
