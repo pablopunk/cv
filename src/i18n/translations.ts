@@ -27,10 +27,11 @@ export const translations = {
     'print.button': 'Print',
     'print.tooltip.title': 'For best results:',
     'print.tooltip.lightTheme': 'Light theme',
-    'print.tooltip.a4Paper': 'A4 paper format',
-    'print.tooltip.minMargins': 'Minimum margins',
-    'print.tooltip.noHeaders': 'No headers/footers',
-    'print.tooltip.printColor': 'Print in color',
+    'print.tooltip.a4Paper': 'A4 paper size',
+    'print.tooltip.fitToPage': 'Scale: Fit to page width',
+    'print.tooltip.noMargins': 'Margins: None',
+    'print.tooltip.noHeaders': 'Uncheck "Print headers and footers"',
+    'print.tooltip.noBackground': 'Uncheck "Print backgrounds"',
     
     // Sections
     'section.experience': 'Experience',
@@ -142,10 +143,11 @@ Comfortable with **graphic design tools** (Figma, Photoshop, Pixelmator...).
     'print.button': 'Imprimir',
     'print.tooltip.title': 'Para mejores resultados:',
     'print.tooltip.lightTheme': 'Tema claro',
-    'print.tooltip.a4Paper': 'Formato de papel A4',
-    'print.tooltip.minMargins': 'Márgenes mínimos',
-    'print.tooltip.noHeaders': 'Sin encabezados/pies de página',
-    'print.tooltip.printColor': 'Imprimir en color',
+    'print.tooltip.a4Paper': 'Tamaño de papel A4',
+    'print.tooltip.fitToPage': 'Escala: Ajustar al ancho de página',
+    'print.tooltip.noMargins': 'Márgenes: Ninguno',
+    'print.tooltip.noHeaders': 'Desmarcar "Imprimir encabezados y pies de página"',
+    'print.tooltip.noBackground': 'Desmarcar "Imprimir fondos"',
     
     // Sections
     'section.experience': 'Experiencia',

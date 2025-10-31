@@ -63,9 +63,10 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
       tooltipItems={[
         t('print.tooltip.lightTheme'),
         t('print.tooltip.a4Paper'),
-        t('print.tooltip.minMargins'),
+        t('print.tooltip.fitToPage'),
+        t('print.tooltip.noMargins'),
         t('print.tooltip.noHeaders'),
-        t('print.tooltip.printColor')
+        t('print.tooltip.noBackground')
       ]}
     />
   </div>

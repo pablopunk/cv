@@ -15,13 +15,13 @@ const t = Astro.locals.t
   <TopButtons locale={locale} />
   <main>
     <div
-      class="flex items-center justify-between px-2 py-1 text-md font-semibold border-t-4 border-accent text-accent"
+      class="flex items-center justify-between px-2 py-1 text-xl font-semibold border-t-4 border-accent text-accent"
     >
       <h1>{t('personal.name')}</h1>
       <h2 class="italic">{t('personal.title')}</h2>
     </div>
     <div
-      class="flex flex-col items-center justify-between mt-4 md:flex-row md:items-start print:flex-row print:items-start"
+      class="flex flex-col items-center justify-between mt-7 md:flex-row md:items-start print:flex-row print:items-start"
     >
       <div class="flex flex-col">
         <Side />
