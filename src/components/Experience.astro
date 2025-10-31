@@ -1,10 +1,8 @@
 ---
 import { marked } from 'marked'
+import Section from './Section.astro'
 
 const t = Astro.locals.t
-
-const sectionTitleStyles =
-  'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
 
 const jobs = [
   {
@@ -50,9 +48,8 @@ const jobs = [
 ]
 ---
 
-<div>
-  <h3 class={sectionTitleStyles}>{t('section.experience')}</h3>
-  <ul class="py-3 pl-4 border-l border-accent2">
+<Section title={t('section.experience')}>
+  <ul class="pr-0">
     {
       jobs.map((job) => (
         <li class="p-2 my-2 border border-dashed rounded-md border-accent">
@@ -82,4 +79,4 @@ const jobs = [
       ))
     }
   </ul>
-</div>
+</Section>

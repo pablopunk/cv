@@ -1,15 +1,11 @@
 ---
-const t = Astro.locals.t
+import Section from './Section.astro'
 
-const sectionTitleStyles =
-  'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
+const t = Astro.locals.t
 ---
 
-<div>
-  <h3 class={sectionTitleStyles}>
-    <span>{t('section.education')}</span>
-  </h3>
-  <ul class="p-3 border-l border-accent2">
+<Section title={t('section.education')}>
+  <ul>
     <li class="">
       <div class="flex justify-between w-full">
         <strong>{t('education.keepcoding')}</strong>
@@ -19,7 +15,6 @@ const sectionTitleStyles =
         <span class="text-accent">
           <i>{t('education.keepcoding.degree')}</i>
         </span>
-        <span></span>
       </div>
     </li>
     <li>
@@ -31,8 +26,7 @@ const sectionTitleStyles =
         <span class="text-accent">
           <i>{t('education.usc.degree')}</i>
         </span>
-        <span></span>
       </div>
     </li>
   </ul>
-</div>
+</Section>

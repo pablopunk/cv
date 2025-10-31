@@ -1,19 +1,13 @@
 ---
 import { marked } from 'marked'
+import Section from './Section.astro'
 
 const t = Astro.locals.t
-
-const sectionTitleStyles =
-  'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
 
 // Render markdown content
 const content = marked.parse(t('other.content'))
 ---
 
-<>
-  <h3 class={sectionTitleStyles}>
-    <span>{t('section.other')}</span>
-  </h3>
-  <div class="p-3 border-l border-accent2 prose prose-sm max-w-none dark:prose-invert prose-strong:text-fg dark:prose-strong:text-fg" set:html={content}>
-  </div>
-</>
+<Section title={t('section.other')}>
+  <div class="prose prose-sm max-w-none dark:prose-invert prose-strong:text-fg dark:prose-strong:text-fg" set:html={content}></div>
+</Section>

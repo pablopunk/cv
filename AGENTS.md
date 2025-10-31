@@ -49,7 +49,7 @@
 ## Source Directory Structure (src/)
 
 - components/
-  - Astro components like Button, CVPage, Education, Experience, LanguagePicker, Other, Side, Skill, Skills, T, ThemeToggle, TopButtons
+  - Astro components like Button, CVPage, Education, Experience, LanguagePicker, Other, Section, Side, Skill, Skills, T, ThemeToggle, TopButtons
   - React components: PrintButton.tsx, ThemeToggle.tsx
 - i18n/
   - translations.ts, utils.ts

@@ -14,11 +14,9 @@ import {
 } from 'react-icons/si'
 import { TbBrandFigma, TbBrandNextjs, TbBrandTailwind, TbSql } from 'react-icons/tb'
 import Skill from './Skill.astro'
+import Section from './Section.astro'
 
 const t = Astro.locals.t
-
-const sectionTitleStyles =
-  'mt-1 border-b border-accent2 p-0 font-semibold text-md uppercase text-right'
 
 const mainSkills = [
   { name: 'skill.typescript', icon: SiTypescript },
@@ -41,30 +39,28 @@ const secondarySkills = [
   { name: 'skill.lua', icon: SiLua },
   { name: 'skill.swift', icon: SiSwift },
 ]
+
 ---
 
-<div>
-  <h3 class={sectionTitleStyles}>{t('section.skills')}</h3>
-  <div class="p-3 border-l border-accent2">
-    <h4 class="text-lg font-semibold">{t('section.skills.core')}</h4>
-     <article class="flex flex-wrap">
-       {
-         mainSkills.map((s) => (
-           <div class="my-2">
-             <Skill text={s.name} Icon={s.icon} />
-           </div>
-         ))
-       }
-     </article>
-     <h4 class="my-2 text-lg font-semibold">{t('section.skills.secondary')}</h4>
-     <article class="flex flex-wrap">
-       {
-         secondarySkills.map((s) => (
-           <div class="my-2">
-             <Skill text={s.name} Icon={s.icon} />
-           </div>
-         ))
-       }
-     </article>
-  </div>
-</div>
+<Section title={t('section.skills')}>
+  <h4 class="text-lg font-semibold">{t('section.skills.core')}</h4>
+  <article class="flex flex-wrap">
+    {
+      mainSkills.map((s) => (
+        <div class="my-2">
+          <Skill text={s.name} Icon={s.icon} />
+        </div>
+      ))
+    }
+  </article>
+  <h4 class="my-2 text-lg font-semibold">{t('section.skills.secondary')}</h4>
+  <article class="flex flex-wrap">
+    {
+      secondarySkills.map((s) => (
+        <div class="my-2">
+          <Skill text={s.name} Icon={s.icon} />
+        </div>
+      ))
+    }
+  </article>
+</Section>
