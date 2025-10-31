@@ -46,14 +46,6 @@ const alternateUrls = {
   </head>
   <body>
     <slot />
-    <script is:inline>
-      // Initialize dark mode after body is loaded
-      ;(function () {
-        const darkMode = 'dark' in localStorage ? localStorage.dark === 'true' : matchMedia('(prefers-color-scheme: dark)').matches
-        if (darkMode) document.documentElement.classList.add('dark')
-        else document.documentElement.classList.remove('dark')
-      })()
-    </script>
     <script is:inline data-goatcounter="/goat" async src="/count.js"></script>
   </body>
 </html>
