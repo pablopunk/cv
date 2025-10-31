@@ -14,6 +14,7 @@
 - `preview`: preview production build
 - `astro`: astro CLI
 - `lint`, `format`, `check`, `check:ci`: biome linting and formatting commands
+- `pnpm`: package manager used for dependency management
 
 ## Astro Configuration (astro.config.mjs)
 
