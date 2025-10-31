@@ -197,7 +197,7 @@ Comfortable with **graphic design tools** (Figma, Photoshop, Pixelmator...).
     // Job descriptions
     'job.maze.description': "Me uní a una **'early stage' startup** que ayudé a crecer hasta lo que es hoy. He trabajado en la **parte más importante del producto** (unmoderated studies en la web) y ayudé a construir la nueva **aplicación móvil desde cero**",
     'job.maze.tech': 'TS, ReactJS, React Native, GraphQL, NodeJS, Neo4J, PostgreSQL',
-    'job.prezly.description': 'Ayudé a construir sus nuevos **frontends desde cero**, impulsados port su CMS',
+    'job.prezly.description': 'Ayudé a construir sus nuevos **frontends desde cero**, impulsados por su CMS',
     'job.prezly.tech': 'Typescript, ReactJS, NextJS',
     'job.sourcefabric.description': 'Contribuí significativamente al **nuevo editor** del CMS de software libre para periodistas, utilizado por **agencias nacionales** y organizaciones independientes en todo el mundo',
     'job.sourcefabric.tech': 'Typescript, ReactJS',
