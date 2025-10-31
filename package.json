@@ -1,5 +1,5 @@
 {
-  "name": "cv-astro",
+  "name": "cv.pablopunk.com",
   "type": "module",
   "version": "1.0.0",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "astro": "^4.16.16",
     "classnames": "^2.3.1",
-    "marked": "^16.4.1",
+
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
@@ -28,6 +28,7 @@
     "tailwindcss": "^3.4.16"
   },
   "devDependencies": {
+    "marked": "^16.4.1",
     "@biomejs/biome": "^1.9.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
