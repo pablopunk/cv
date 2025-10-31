@@ -1,7 +1,7 @@
 {
   "functions": {
     "**/*": {
-      "runtime": "node@22"
+      "runtime": "node@22.21.1"
     }
   }
 }
