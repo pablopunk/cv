@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets'
+import profileImg from '../../public/profile.jpg'
+
+const t = Astro.locals.t
+---
+
+<>
+  <div class="my-4">
+    <Image
+      src={profileImg}
+      width={158}
+      height={158}
+      alt="Profile pic"
+      class="border-4 rounded-full border-accent2"
+    />
+  </div>
+  <a class="my-1 text-accent" href="mailto:pablo@pablopunk.com">pablo@pablopunk.com</a>
+  <a class="my-1 text-accent" href="https://pablopunk.com">pablopunk.com</a>
+  <div class="my-1">
+    {t('personal.location')}, {t('personal.country')} 🇪🇸
+  </div>
+</>

@@ -1,0 +1,73 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { getLangFromUrl } from '../i18n/utils'
+import PrintButton from './PrintButton'
+import ThemeToggle from './ThemeToggle'
+
+const locale = getLangFromUrl(Astro.url)
+const t = Astro.locals.t
+const isEnglish = locale === 'en'
+const isSpanish = locale === 'es'
+
+// Get the current page path without locale prefix for language switching
+const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
+---
+
+<nav class="flex items-center justify-between w-full mb-6 print:hidden py-3 px-3 bg-white dark:bg-bg2 border-b border-accent2/20 dark:border-accent2/20 rounded-lg text-xl dark:shadow-none shadow-sm">
+  <div class="flex items-center gap-1">
+    {
+      isEnglish && (
+        <span class="cursor-default inline-flex items-center justify-center whitespace-nowrap font-medium h-8 rounded-md px-2.5 py-3 opacity-60">
+          🇺🇸 <span class="hidden sm:inline">English</span>
+        </span>
+      )
+    }
+    {
+      !isEnglish && (
+        <a
+          href={getRelativeLocaleUrl('en', currentPath)}
+          class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
+        >
+          🇺🇸 <span class="hidden sm:inline">English</span>
+        </a>
+      )
+    }
+    {
+      isSpanish && (
+        <span class="cursor-default inline-flex items-center justify-center whitespace-nowrap font-medium h-8 rounded-md px-2.5 py-3 opacity-60">
+          🇪🇸 <span class="hidden sm:inline">Español</span>
+        </span>
+      )
+    }
+    {
+      !isSpanish && (
+        <a
+          href={getRelativeLocaleUrl('es', currentPath)}
+          class="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3"
+        >
+          🇪🇸 <span class="hidden sm:inline">Español</span>
+        </a>
+      )
+    }
+  </div>
+  <div class="flex items-center gap-1">
+    <ThemeToggle
+      client:load
+      lightThemeText={t('theme.light')}
+      darkThemeText={t('theme.dark')}
+    />
+    <PrintButton
+      client:load
+      printText={t('print.button')}
+      tooltipTitle={t('print.tooltip.title')}
+      tooltipItems={[
+        t('print.tooltip.lightTheme'),
+        t('print.tooltip.a4Paper'),
+        t('print.tooltip.fitToPage'),
+        t('print.tooltip.noMargins'),
+        t('print.tooltip.noHeaders'),
+        t('print.tooltip.noBackground')
+      ]}
+    />
+  </div>
+</nav>

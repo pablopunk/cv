@@ -1,0 +1,47 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { languages } from '../i18n/ui'
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils'
+
+const currentLang = getLangFromUrl(Astro.url)
+const translatePath = useTranslatedPath(currentLang)
+
+// Get the current page path without locale prefix
+const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/'
+---
+
+<div class="language-picker">
+  {Object.entries(languages).map(([lang, label]) => (
+    <a 
+      href={getRelativeLocaleUrl(lang, currentPath)}
+      class:list={['lang-link', { active: lang === currentLang }]}
+      aria-current={lang === currentLang ? 'page' : undefined}
+    >
+      {label}
+    </a>
+  ))}
+</div>
+
+<style>
+  .language-picker {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .lang-link {
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+  }
+  
+  .lang-link:hover {
+    background-color: var(--color-accent-light);
+  }
+  
+  .lang-link.active {
+    font-weight: bold;
+    background-color: var(--color-accent);
+    color: white;
+  }
+</style>

@@ -1,0 +1,32 @@
+---
+import Section from './Section.astro'
+
+const t = Astro.locals.t
+---
+
+<Section title={t('section.education')}>
+  <ul>
+    <li class="">
+      <div class="flex justify-between w-full">
+        <strong>{t('education.keepcoding')}</strong>
+        <span>2017-2018</span>
+      </div>
+      <div>
+        <span class="text-accent">
+          <i>{t('education.keepcoding.degree')}</i>
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="flex justify-between w-full">
+        <strong>Universidade de Santiago de Compostela</strong>
+        <span>2011-2015</span>
+      </div>
+      <div>
+        <span class="text-accent">
+          <i>{t('education.usc.degree')}</i>
+        </span>
+      </div>
+    </li>
+  </ul>
+</Section>

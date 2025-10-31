@@ -1,0 +1,98 @@
+:root {
+  --color-bg: #f2f2f2;
+  --color-bg2: #dfdfdf;
+  --color-fg: #454545;
+  --color-accent: royalblue;
+  --color-accent2: darkturquoise;
+  --color-border: #e0e0e0;
+
+  font-size: 13px;
+}
+
+html.dark {
+  --color-bg: #121212;
+  --color-bg2: black;
+  --color-fg: #f2f2f2;
+  --color-accent: aquamarine;
+  --color-accent2: deeppink;
+  --color-border: #565656;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+/* Default (light mode) styles */
+.light-hidden {
+  display: none;
+}
+.dark-hidden {
+  display: flex;
+}
+
+/* Dark mode styles */
+html.dark .light-hidden {
+  display: flex;
+}
+html.dark .dark-hidden {
+  display: none;
+}
+
+/* Tooltip animations */
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideDownAndFade {
+  animation: slideDownAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-slideUpAndFade {
+  animation: slideUpAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-slideLeftAndFade {
+  animation: slideLeftAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-slideRightAndFade {
+  animation: slideRightAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}

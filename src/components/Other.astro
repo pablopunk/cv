@@ -1,0 +1,13 @@
+---
+import { marked } from 'marked'
+import Section from './Section.astro'
+
+const t = Astro.locals.t
+
+// Render markdown content
+const content = marked.parse(t('other.content'))
+---
+
+<Section title={t('section.other')}>
+  <div class="prose prose-sm max-w-none dark:prose-invert prose-strong:text-fg dark:prose-strong:text-fg" set:html={content}></div>
+</Section>

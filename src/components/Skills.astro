@@ -1,0 +1,66 @@
+---
+import { AiFillApple, AiFillGithub } from 'react-icons/ai'
+import { DiLinux } from 'react-icons/di'
+import { FaNodeJs } from 'react-icons/fa'
+import {
+  SiElectron,
+  SiLua,
+  SiMongodb,
+  SiNeo4J,
+  SiNeovim,
+  SiReact,
+  SiSwift,
+  SiTypescript,
+} from 'react-icons/si'
+import { TbBrandFigma, TbBrandNextjs, TbBrandTailwind, TbSql } from 'react-icons/tb'
+import Skill from './Skill.astro'
+import Section from './Section.astro'
+
+const t = Astro.locals.t
+
+const mainSkills = [
+  { name: 'skill.typescript', icon: SiTypescript },
+  { name: 'skill.react', icon: SiReact },
+  { name: 'skill.nextjs', icon: TbBrandNextjs },
+  { name: 'skill.tailwind', icon: TbBrandTailwind },
+  { name: 'skill.nodejs', icon: FaNodeJs },
+  { name: 'skill.github', icon: AiFillGithub },
+  { name: 'skill.macos', icon: AiFillApple },
+  { name: 'skill.linux', icon: DiLinux },
+]
+
+const secondarySkills = [
+  { name: 'skill.neo4j', icon: SiNeo4J },
+  { name: 'skill.sql', icon: TbSql },
+  { name: 'skill.mongodb', icon: SiMongodb },
+  { name: 'skill.electron', icon: SiElectron },
+  { name: 'skill.neovim', icon: SiNeovim },
+  { name: 'skill.figma', icon: TbBrandFigma },
+  { name: 'skill.lua', icon: SiLua },
+  { name: 'skill.swift', icon: SiSwift },
+]
+
+---
+
+<Section title={t('section.skills')}>
+  <h4 class="text-lg font-semibold">{t('section.skills.core')}</h4>
+  <article class="flex flex-wrap">
+    {
+      mainSkills.map((s) => (
+        <div class="my-2">
+          <Skill text={s.name} Icon={s.icon} />
+        </div>
+      ))
+    }
+  </article>
+  <h4 class="my-2 text-lg font-semibold">{t('section.skills.secondary')}</h4>
+  <article class="flex flex-wrap">
+    {
+      secondarySkills.map((s) => (
+        <div class="my-2">
+          <Skill text={s.name} Icon={s.icon} />
+        </div>
+      ))
+    }
+  </article>
+</Section>

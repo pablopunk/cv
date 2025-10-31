@@ -1,0 +1,56 @@
+---
+import { getAbsoluteLocaleUrl } from 'astro:i18n'
+import { getLangFromUrl } from '../i18n/utils'
+
+export interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+
+// Generate alternate language URLs for SEO
+const alternateUrls = {
+  en: getAbsoluteLocaleUrl('en', Astro.url.pathname.replace(/^\/(en|es)/, '')),
+  es: getAbsoluteLocaleUrl('es', Astro.url.pathname.replace(/^\/(en|es)/, '')),
+}
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Pablo P Varela's personal CV and portfolio - Full Stack Developer with expertise in software engineering and web development." />
+    <title>{title}</title>
+    
+    <!-- Alternate language links for SEO -->
+    <link rel="alternate" href={alternateUrls.en} hreflang="en" />
+    <link rel="alternate" href={alternateUrls.es} hreflang="es" />
+    <link rel="alternate" href={alternateUrls.en} hreflang="x-default" />
+    
+    <script is:inline>
+      // Dark mode script to prevent FOUC
+      ;(function () {
+        const darkMode = 'dark' in localStorage ? localStorage.dark === 'true' : matchMedia('(prefers-color-scheme: dark)').matches
+        if (darkMode) document.documentElement.classList.add('dark')
+        else document.documentElement.classList.remove('dark')
+        
+        window.__toggleDarkMode = function () {
+          const isDark = document.documentElement.classList.toggle('dark')
+          localStorage.setItem('dark', isDark)
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script is:inline data-goatcounter="/goat" async src="/count.js"></script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
