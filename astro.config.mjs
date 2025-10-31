@@ -8,6 +8,7 @@ export default defineConfig({
   server: {
     host: true,
   },
+  site: 'https://cv.pablopunk.com',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],
