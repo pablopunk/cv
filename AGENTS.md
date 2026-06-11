@@ -8,7 +8,7 @@
 
 ## Runtime / Tooling
 
-- Node.js: 20.x (required so the Astro Vercel adapter emits a supported Vercel runtime)
+- Node.js: 22.x (required so the Astro Vercel adapter emits a supported Vercel runtime)
 - Package manager: pnpm
 
 ## Scripts
@@ -27,9 +27,8 @@
   - react
   - tailwind
 - Adapter/output:
-  - `@astrojs/vercel/serverless`
-  - `output: hybrid` with `experimental.serverIslands`
-  - Pages prerender statically; selected components can use `server:defer` for request-time rendering on Vercel
+  - `@astrojs/vercel`
+  - `output: server`; pages prerender statically while selected components can use `server:defer` server islands for request-time rendering on Vercel
 - Server:
   - host: true
 - i18n:
