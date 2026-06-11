@@ -1,17 +1,14 @@
 ---
-import { Image } from 'astro:assets'
-import profileImg from '../../public/profile.jpg'
-
 const t = Astro.locals.t
 ---
 
 <>
   <div class="my-4">
     <a href="https://pablopunk.com/lightbox" aria-label="Open photo lightbox">
-      <Image
-        src={profileImg}
-        width={158}
-        height={158}
+      <img
+        src="/profile.jpg"
+        width="158"
+        height="158"
         alt="Profile pic"
         class="border-4 rounded-full border-accent2"
       />
