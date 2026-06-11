@@ -6,7 +6,11 @@ import vercel from '@astrojs/vercel'
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind()],
-  adapter: vercel(),
+  adapter: vercel({
+    isr: {
+      expiration: 60 * 60 * 24,
+    },
+  }),
   output: 'server',
   server: {
     host: true,

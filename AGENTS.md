@@ -28,7 +28,7 @@
   - tailwind
 - Adapter/output:
   - `@astrojs/vercel`
-  - `output: server`; pages prerender statically while selected components can use `server:defer` server islands for request-time rendering on Vercel
+  - `output: server` with Vercel ISR (`expiration: 86400`) so pages are cached and revalidated on request
 - Server:
   - host: true
 - i18n:
