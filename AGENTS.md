@@ -6,6 +6,11 @@
 - **Version:** 1.0.0
 - **License:** MIT
 
+## Runtime / Tooling
+
+- Node.js: 20.x (required so the Astro Vercel adapter emits a supported Vercel runtime)
+- Package manager: pnpm
+
 ## Scripts
 
 - `dev`: astro dev server on port 1234
