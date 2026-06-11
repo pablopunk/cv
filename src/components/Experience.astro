@@ -1,17 +1,19 @@
 ---
 import { marked } from 'marked'
+import JobDuration from './JobDuration.astro'
 import Section from './Section.astro'
 
 const t = Astro.locals.t
+const mazeStartDate = '2021-08-01T00:00:00Z'
 
 const jobs = [
   {
     position: t('position.senior.fullstack'),
     company: t('company.maze'),
     url: 'https://www.maze.co/',
-    period: t('month.aug') + ' 2021-' + t('time.today'),
-    time: t('time.currently'),
-    location: '100% ' + t('location.remote'),
+    period: `${t('month.aug')} 2021-${t('time.today')}`,
+    startDate: mazeStartDate,
+    location: `100% ${t('location.remote')}`,
     description: t('job.maze.description'),
     tech: t('job.maze.tech'),
   },
@@ -19,9 +21,9 @@ const jobs = [
     position: t('position.senior.frontend'),
     company: t('company.prezly'),
     url: 'https://www.prezly.com/',
-    period: t('month.mar') + ' 2021-' + t('month.jul') + ' 2021',
-    time: '5 ' + t('time.months'),
-    location: '100% ' + t('location.remote'),
+    period: `${t('month.mar')} 2021-${t('month.jul')} 2021`,
+    time: `5 ${t('time.months')}`,
+    location: `100% ${t('location.remote')}`,
     description: t('job.prezly.description'),
     tech: t('job.prezly.tech'),
   },
@@ -30,8 +32,8 @@ const jobs = [
     company: t('company.sourcefabric'),
     url: 'https://www.superdesk.org/',
     period: '2018-2020',
-    time: '3 ' + t('time.years'),
-    location: '100% ' + t('location.remote'),
+    time: `3 ${t('time.years')}`,
+    location: `100% ${t('location.remote')}`,
     description: t('job.sourcefabric.description'),
     tech: t('job.sourcefabric.tech'),
   },
@@ -40,7 +42,7 @@ const jobs = [
     company: t('company.stang'),
     url: 'https://stangds.com',
     period: '2016-2018',
-    time: '2 ' + t('time.years'),
+    time: `2 ${t('time.years')}`,
     location: t('location.marquette'),
     description: t('job.stang.description'),
     tech: t('job.stang.tech'),
@@ -68,7 +70,22 @@ const jobs = [
               <i>{job.location}</i>
             </span>
             <span>
-              <i>{job.time}</i>
+              <i>
+                {'startDate' in job ? (
+                  <JobDuration
+                    server:defer
+                    startDate={job.startDate}
+                    yearText={t('time.year')}
+                    yearsText={t('time.years')}
+                    monthText={t('time.month')}
+                    monthsText={t('time.months')}
+                  >
+                    <span slot="fallback">{t('time.currently')}</span>
+                  </JobDuration>
+                ) : (
+                  job.time
+                )}
+              </i>
             </span>
           </div>
           <div class="flex justify-between w-full mt-1 text-sm">

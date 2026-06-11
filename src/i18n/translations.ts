@@ -42,7 +42,9 @@ export const translations = {
     'section.other': 'Other',
 
     // Time
+    'time.year': 'year',
     'time.years': 'years',
+    'time.month': 'month',
     'time.months': 'months',
     'time.currently': 'Currently',
     'time.today': 'Today',
@@ -161,7 +163,9 @@ Comfortable with **graphic design tools** (Figma, Photoshop, Pixelmator...).
     'section.other': 'Otros',
 
     // Time
+    'time.year': 'año',
     'time.years': 'años',
+    'time.month': 'mes',
     'time.months': 'meses',
     'time.currently': 'Actualmente',
     'time.today': 'Hoy',

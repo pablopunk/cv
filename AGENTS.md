@@ -21,6 +21,10 @@
 - Integrations:
   - react
   - tailwind
+- Adapter/output:
+  - `@astrojs/vercel/serverless`
+  - `output: hybrid` with `experimental.serverIslands`
+  - Pages prerender statically; selected components can use `server:defer` for request-time rendering on Vercel
 - Server:
   - host: true
 - i18n:

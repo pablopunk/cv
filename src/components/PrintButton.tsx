@@ -13,6 +13,7 @@ export default function PrintButton({ printText, tooltipTitle, tooltipItems }: P
       <Tooltip.Root delayDuration={0}>
         <Tooltip.Trigger asChild>
           <button
+            type="button"
             onClick={() => window.print()}
             className="cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 hover:bg-bg hover:text-accent h-8 rounded-md px-2.5 py-3 gap-1.5"
           >
@@ -27,8 +28,8 @@ export default function PrintButton({ printText, tooltipTitle, tooltipItems }: P
           >
             <p className="font-semibold mb-2">{tooltipTitle}</p>
             <ul className="list-disc list-inside space-y-1 text-sm">
-              {tooltipItems.map((item, index) => (
-                <li key={index}>{item}</li>
+              {tooltipItems.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
             <Tooltip.Arrow className="fill-bg2 dark:fill-bg" />
